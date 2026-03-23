@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maelys Le Brun | E-Portfolio</title>
+  <meta name="description" content="Portfolio de Maelys Le Brun - Développement web, cybersécurité et droit du numérique." />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(236, 72, 153, 0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(244, 114, 182, 0.12), transparent 26%),
+        radial-gradient(circle at bottom center, rgba(232, 121, 249, 0.10), transparent 32%),
+        linear-gradient(to bottom, #020617, #0f172a 35%, #020617 100%);
+      overflow-x: hidden;
+    }
+
+    .glass {
+      background: rgba(15, 23, 42, 0.56);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .soft-border {
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .section-title {
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 62%;
+      height: 4px;
+      margin-top: 10px;
+      border-radius: 999px;
+      background: linear-gradient(to right, #ec4899, #f472b6, #e879f9);
+    }
+
+    .pink-button {
+      background: linear-gradient(135deg, #ec4899, #f472b6);
+      color: white;
+      box-shadow: 0 14px 34px rgba(236, 72, 153, 0.22);
+      transition: 0.25s ease;
+    }
+
+    .pink-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 40px rgba(236, 72, 153, 0.34);
+    }
+
+    .outline-button {
+      transition: 0.25s ease;
+    }
+
+    .outline-button:hover {
+      border-color: rgba(244, 114, 182, 0.35);
+      background: rgba(244, 114, 182, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .card-hover {
+      transition: 0.25s ease;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-5px);
+      border-color: rgba(244, 114, 182, 0.22);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.24);
+    }
+
+    .tag {
+      background: rgba(15, 23, 42, 0.78);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .project-cover {
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.09), transparent 32%),
+        linear-gradient(135deg, rgba(236, 72, 153, 0.36), rgba(244, 114, 182, 0.16), rgba(15, 23, 42, 0.96));
+    }
+
+    .project-preview {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)),
+        rgba(2, 6, 23, 0.58);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .hero-blob {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(60px);
+      opacity: 0.45;
+      pointer-events: none;
+      animation: floatBlob 9s ease-in-out infinite;
+    }
+
+    .hero-blob.blob-1 {
+      width: 260px;
+      height: 260px;
+      background: rgba(236, 72, 153, 0.26);
+      top: 70px;
+      left: -40px;
+    }
+
+    .hero-blob.blob-2 {
+      width: 230px;
+      height: 230px;
+      background: rgba(232, 121, 249, 0.18);
+      bottom: 20px;
+      right: -30px;
+      animation-delay: 2s;
+    }
+
+    @keyframes floatBlob {
+      0%, 100% { transform: translateY(0px) translateX(0px); }
+      50% { transform: translateY(-10px) translateX(8px); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .nav-link.active {
+      color: #f9a8d4;
+    }
+
+    .back-to-top {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: 0.25s ease;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .skill-icon-wrap {
+      width: 64px;
+      height: 64px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(236,72,153,0.22), rgba(232,121,249,0.10));
+      border: 1px solid rgba(255,255,255,0.10);
+      margin-bottom: 18px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+    }
+
+    .skill-icon {
+      width: 28px;
+      height: 28px;
+      stroke: #fbcfe8;
+    }
+
+    .cert-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(15, 23, 42, 0.72);
+    }
+
+    .cert-badge {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(236,72,153,0.22), rgba(244,114,182,0.12));
+      border: 1px solid rgba(255,255,255,0.08);
+      flex-shrink: 0;
+      color: #fbcfe8;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .project-image {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+        .skills-hidden {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.35s ease, opacity 0.25s ease, margin-top 0.25s ease;
+      margin-top: 0;
+    }
+
+    .skills-hidden.open {
+      max-height: 300px;
+      opacity: 1;
+      margin-top: 12px;
+      overflow-y: auto;
+      padding-right: 6px;
+    }
+
+    .skills-toggle {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 14px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+      color: #f9a8d4;
+      transition: 0.25s ease;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .skills-toggle:hover {
+      background: rgba(244, 114, 182, 0.10);
+      border-color: rgba(244, 114, 182, 0.28);
+      transform: translateY(-2px);
+    }
+
+    .skills-toggle svg {
+      width: 18px;
+      height: 18px;
+      transition: transform 0.25s ease;
+    }
+
+    .skills-toggle.open svg {
+      transform: rotate(180deg);
+    }
+
+    .skills-hidden::-webkit-scrollbar {
+  width: 6px;
+}
+
+.skills-hidden::-webkit-scrollbar-thumb {
+  background: rgba(244, 114, 182, 0.4);
+  border-radius: 999px;
+}
+  </style>
+</head>
+
+<body class="text-white">
+
+  <nav class="fixed top-0 w-full z-50 border-b border-white/10 bg-slate-950/70 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div>
+        <p class="text-lg font-bold tracking-wide">Maelys Le Brun</p>
+        <p class="text-xs uppercase tracking-[0.35em] text-slate-400">E-Portfolio</p>
+      </div>
+
+      <div class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+        <a href="#about" class="nav-link hover:text-pink-300 transition">À propos</a>
+        <a href="#skills" class="nav-link hover:text-pink-300 transition">Compétences</a>
+        <a href="#projects" class="nav-link hover:text-pink-300 transition">Projets</a>
+        <a href="#stages" class="nav-link hover:text-pink-300 transition">Stages</a>
+        <a href="#parcours" class="nav-link hover:text-pink-300 transition">Parcours</a>
+        <a href="#veille" class="nav-link hover:text-pink-300 transition">Veille Technologique</a>
+        <a href="#contact" class="nav-link hover:text-pink-300 transition">Contact</a>
+      </div>
+
+      <button id="menuButton" class="md:hidden flex items-center justify-center w-11 h-11 rounded-xl border border-white/10 bg-white/5">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+
+    <div id="mobileMenu" class="hidden md:hidden border-t border-white/10 bg-slate-950/95 px-6 py-4">
+      <div class="flex flex-col gap-4 text-sm text-slate-300">
+        <a href="#about" class="mobile-link hover:text-pink-300 transition">À propos</a>
+        <a href="#skills" class="mobile-link hover:text-pink-300 transition">Compétences</a>
+        <a href="#projects" class="mobile-link hover:text-pink-300 transition">Projets</a>
+        <a href="#stages" class="mobile-link hover:text-pink-300 transition">Stages</a>
+        <a href="#parcours" class="mobile-link hover:text-pink-300 transition">Parcours</a>
+        <a href="#veille" class="mobile-link hover:text-pink-300 transition">Veille Technologique</a>
+        <a href="#contact" class="mobile-link hover:text-pink-300 transition">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="min-h-screen flex items-center pt-28 px-6 relative">
+    <div class="hero-blob blob-1"></div>
+    <div class="hero-blob blob-2"></div>
+
+    <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
+      <div class="reveal">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-pink-400/30 bg-pink-400/10 text-pink-200 text-sm mb-6">
+          Développement · Cybersécurité · Droit du numérique
+        </div>
+
+        <h1 class="text-5xl md:text-6xl xl:text-7xl font-black leading-tight tracking-tight mb-6">
+          Bienvenue sur mon e-portfolio !
+        </h1>
+
+        <p class="text-lg md:text-xl text-slate-300 leading-8 max-w-2xl mb-8">
+          Étudiante en BTS SIO option SLAM, je développe des applications web et logicielles tout en m’intéressant à la sécurité des systèmes et aux enjeux juridiques du numérique.
+        </p>
+
+        <div class="flex flex-wrap gap-4 mb-10">
+          <a href="#projects" class="pink-button px-6 py-3 rounded-2xl font-semibold">
+            Voir mes projets !
+          </a>
+          <a href="CV_Maelys-Le-Brun.pdf" download class="outline-button px-6 py-3 rounded-2xl border border-white/15 bg-white/5 text-white font-semibold">
+            Télécharger mon CV !
+          </a>
+          <a href="#contact" class="outline-button px-6 py-3 rounded-2xl border border-white/15 bg-white/5 text-white font-semibold">
+            Me contacter !
+          </a>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-4 max-w-3xl">
+          <div class="glass soft-border rounded-3xl p-5">
+            <p class="text-3xl font-bold">4+</p>
+            <p class="text-sm text-slate-400 mt-2">projets effectués</p>
+          </div>
+          <div class="glass soft-border rounded-3xl p-5">
+            <p class="text-3xl font-bold">10+</p>
+            <p class="text-sm text-slate-400 mt-2">certifications</p>
+          </div>
+          <div class="glass soft-border rounded-3xl p-5">
+            <p class="text-3xl font-bold">3</p>
+            <p class="text-sm text-slate-400 mt-2">intérêts passionnants</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative reveal">
+        <div class="absolute -inset-4 bg-gradient-to-br from-pink-500/20 to-fuchsia-500/20 blur-3xl rounded-[2rem]"></div>
+
+        <div class="relative glass soft-border rounded-[2rem] p-6 shadow-2xl">
+          <div class="flex items-center justify-between mb-5">
+            <div class="flex gap-2">
+              <span class="w-3 h-3 rounded-full bg-rose-400"></span>
+              <span class="w-3 h-3 rounded-full bg-pink-300"></span>
+              <span class="w-3 h-3 rounded-full bg-fuchsia-400"></span>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div class="rounded-3xl border border-white/10 bg-slate-900/80 p-5">
+              <p class="text-sm uppercase tracking-[0.25em] text-pink-300">Profil</p>
+              <h2 class="text-2xl font-bold mt-3">Développeuse en construction</h2>
+              <p class="text-sm leading-7 text-slate-300 mt-3">
+                Je développe des applications et j’explore les enjeux de sécurité et de droit qui accompagnent les technologies numériques.
+              </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
+                <p class="text-sm text-slate-400">Focus</p>
+                <p class="mt-2 font-semibold">Applications utiles et droit du numérique</p>
+              </div>
+              <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
+                <p class="text-sm text-slate-400">Différenciation</p>
+                <p class="mt-2 font-semibold">Cybersécurité et droit</p>
+              </div>
+            </div>
+
+            <div class="rounded-3xl border border-dashed border-pink-400/40 bg-pink-400/10 p-5">
+              <p class="text-sm uppercase tracking-[0.25em] text-pink-200">Intention</p>
+              <p class="text-sm leading-7 text-slate-200 mt-3">
+                Montrer le travail, la logique et la progression derrière chacun de mes projets et l'amélioration de mes compétences.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="max-w-7xl mx-auto px-6 py-20">
+    <div class="grid lg:grid-cols-[0.85fr_1.15fr] gap-6">
+      <div class="glass soft-border rounded-[2rem] p-8 reveal">
+        <h2 class="section-title text-3xl md:text-4xl font-bold mt-3">À propos de moi</h2>
+      </div>
+
+      <div class="glass soft-border rounded-[2rem] p-8 text-slate-300 reveal">
+        <p class="leading-8">
+          Je suis actuellement étudiante en deuxième année de BTS SIO option SLAM et je développe progressivement un profil à la croisée du développement, de la cybersécurité et du droit du numérique.
+        </p>
+        <p class="leading-8 mt-4">
+          Mon objectif n’est pas seulement d’apprendre à coder, mais de concevoir des projets utiles, compréhensibles et techniquement cohérents, tout en intégrant les questions de sécurité, de conformité et de responsabilité liées au numérique.
+        </p>
+        <p class="leading-8 mt-4">
+          Mon projet professionnel est de poursuivre mes études en droit afin de me spécialiser dans le droit du numérique. Mon objectif est de développer un profil à l’interface entre la technologie et le cadre juridique qui l’encadre, afin de mieux comprendre et accompagner les enjeux liés à la cybersécurité, aux données personnelles et à la régulation des technologies.
+        <p class="leading-8 mt-4">
+          À travers ce portfolio, je souhaite montrer mon évolution, mes réalisations concrètes et ma manière de structurer un projet de façon sérieuse.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="max-w-7xl mx-auto px-6 py-24">
+    <div class="mb-12 reveal">
+      <h2 class="section-title text-3xl md:text-4xl font-bold mt-3">Compétences</h2>
+      <p class="text-slate-400 leading-8 mt-6 max-w-4xl">
+Cette section reflète les compétences que j’ai développées au fil de mes projets, les outils que j’utilise et les domaines qui m’intéressent, notamment la cybersécurité et le droit du numérique.      </p>
+    </div>
+
+          <div class="glass soft-border rounded-[2rem] p-7 card-hover reveal">
+        <div class="skill-icon-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" class="skill-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l-3 3 3 3m8-6l3 3-3 3M13 6l-2 12"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-5">Développement</h3>
+        <p class="text-slate-300 leading-7 mb-5">
+          Je développe des applications web et logicielles en travaillant sur la structure du code, la logique métier et la gestion des données.
+        </p>
+
+        <div class="skills-group">
+          <div class="flex flex-wrap gap-3">
+            <span class="tag px-4 py-2 rounded-full text-sm">HTML</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">CSS</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">JavaScript</span>
+          </div>
+
+          <div class="skills-hidden flex flex-wrap gap-3">
+            <span class="tag px-4 py-2 rounded-full text-sm">PHP</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">Java</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">Python</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">SQL</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">Tailwind CSS</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">Modèle MVC</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">Bootstrap</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">CodeIgniter</span>
+          </div>
+
+          <button class="skills-toggle" type="button" aria-label="Afficher plus de compétences">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+            <div class="glass soft-border rounded-[2rem] p-7 card-hover reveal">
+        <div class="skill-icon-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" class="skill-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.5 12l1.5 1.5 3.5-3.5"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-5">Cybersécurité</h3>
+        <p class="text-slate-300 leading-7 mb-5">
+          Je m’intéresse à la sécurité des applications web, notamment à travers l’analyse des vulnérabilités, les tests et les bonnes pratiques de développement sécurisé.
+        </p>
+
+        <div class="skills-group">
+          <div class="flex flex-wrap gap-3">
+            <span class="tag px-4 py-2 rounded-full text-sm">OWASP</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">ZAP</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">Burp Suite</span>
+          </div>
+
+          <div class="skills-hidden flex flex-wrap gap-3">
+            <span class="tag px-4 py-2 rounded-full text-sm">Audit web</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">Tests d’authentification</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">Validation des entrées</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">Gestion des erreurs</span>
+          </div>
+
+          <button class="skills-toggle" type="button" aria-label="Afficher plus de compétences">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+            <div class="glass soft-border rounded-[2rem] p-7 card-hover reveal">
+        <div class="skill-icon-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" class="skill-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M7 4v6m10-6v6M5 11h14v8H5z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-5">Outils & environnement</h3>
+        <p class="text-slate-300 leading-7 mb-5">
+          J’utilise différents outils de développement et d’environnement de travail pour concevoir, tester et organiser mes projets.
+        </p>
+
+        <div class="skills-group">
+          <div class="flex flex-wrap gap-3">
+            <span class="tag px-4 py-2 rounded-full text-sm">Git</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">GitHub</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">VS Code</span>
+          </div>
+
+          <div class="skills-hidden flex flex-wrap gap-3">
+            <span class="tag px-4 py-2 rounded-full text-sm">Eclipse</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">VirtualBox</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">XAMPP</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">MySQL</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">MariaDB</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">PostgreSQL</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">MongoDB</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">SQLite</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">Docker</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">Linux</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">Windows</span>
+          </div>
+
+          <button class="skills-toggle" type="button" aria-label="Afficher plus de compétences">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+            <div class="glass soft-border rounded-[2rem] p-7 card-hover reveal">
+        <div class="skill-icon-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" class="skill-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2"/>
+            <circle cx="12" cy="12" r="9" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-5">Veille & droit du numérique</h3>
+        <p class="text-slate-300 leading-7 mb-5">
+          Grâce à ma veille technologique, j'en apprends plus sur les enjeux juridiques du numérique, notamment la protection des données, la régulation des technologies et les questions liées à la cybersécurité.
+        </p>
+
+        <div class="skills-group">
+          <div class="flex flex-wrap gap-3">
+            <span class="tag px-4 py-2 rounded-full text-sm">Analyse des évolutions et de leurs impacts juridiques</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">Recherche et sélection de sources fiables</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">Utilisation d’outils de veille</span>
+          </div>
+
+          <div class="skills-hidden flex flex-wrap gap-3">
+            <span class="tag px-4 py-2 rounded-full text-sm">Google Alerts</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">Feedly</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">LinkedIn</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">Synthèse et vulgarisation de contenus complexes</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">Rédaction de travaux de veille et présentations</span>
+          </div>
+
+          <button class="skills-toggle" type="button" aria-label="Afficher plus de compétences">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+            <div class="glass soft-border rounded-[2rem] p-7 card-hover reveal">
+        <div class="skill-icon-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" class="skill-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 4h10l2 3v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l2-3z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-5">Certifications</h3>
+        <p class="text-slate-300 leading-7 mb-5">
+          Je possède plusieurs certifications dans les domaines de la cybersécurité, de l'analyse de données et du développement, qui complètent ma formation.
+        </p>
+
+        <div class="skills-group">
+          <div class="space-y-3 text-sm text-slate-300">
+            <div class="cert-item">
+              <div class="cert-badge">ANSSI</div>
+              <span>MOOC SecNumAcadémie — ANSSI</span>
+            </div>
+            <div class="cert-item">
+              <div class="cert-badge">CISCO</div>
+              <span>Introduction à la cybersécurité — Cisco</span>
+            </div>
+            <div class="cert-item">
+              <div class="cert-badge">CISCO</div>
+              <span>Introduction à la science des données — Cisco</span>
+            </div>
+          </div>
+
+          <div class="skills-hidden">
+            <div class="space-y-3 text-sm text-slate-300">
+              <div class="cert-item">
+                <div class="cert-badge">CISCO</div>
+                <span>Fondamentaux de l’analyse des données — Cisco</span>
+              </div>
+              <div class="cert-item">
+                <div class="cert-badge">OC</div>
+                <span>Bases du langage Java — OpenClassrooms</span>
+              </div>
+              <div class="cert-item">
+                <div class="cert-badge">OC</div>
+                <span>Bases du langage Python — OpenClassrooms</span>
+              </div>
+              <div class="cert-item">
+                <div class="cert-badge">OC</div>
+                <span>Effectuer une veille en cybersécurité — OpenClassrooms</span>
+              </div>
+              <div class="cert-item">
+                <div class="cert-badge">OC</div>
+                <span>Utiliser ChatGPT pour améliorer sa productivité — OpenClassrooms</span>
+              </div>
+              <div class="cert-item">
+                <div class="cert-badge">OC</div>
+                <span>Développer les soft skills — OpenClassrooms</span>
+              </div>
+              <div class="cert-item">
+                <div class="cert-badge">CNIL</div>
+                <span>MOOC RGPD — CNIL</span>
+              </div>
+            </div>
+          </div>
+
+          <button class="skills-toggle" type="button" aria-label="Afficher plus de certifications">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+            <div class="glass soft-border rounded-[2rem] p-7 card-hover reveal">
+        <div class="skill-icon-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" class="skill-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 11c0-3 2-5 5-5m-10 0c3 0 5 2 5 5m0 0v7m0-7c0 3-2 5-5 5m10 0c-3 0-5-2-5-5"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-5">Soft Skills</h3>
+        <p class="text-slate-300 leading-7 mb-5">
+          Au-delà des compétences techniques, je m’appuie sur des qualités comme la rigueur, l’autonomie et l’organisation, qui me permettent de travailler efficacement et de progresser.
+        </p>
+
+        <div class="skills-group">
+          <div class="flex flex-wrap gap-3">
+            <span class="tag px-4 py-2 rounded-full text-sm">Rigueur</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">Autonomie</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">Curiosité</span>
+          </div>
+
+          <div class="skills-hidden flex flex-wrap gap-3">
+            <span class="tag px-4 py-2 rounded-full text-sm">Organisation</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">Capacité d’analyse</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">Persévérance</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">Adaptabilité</span>
+            <span class="tag px-4 py-2 rounded-full text-sm">Esprit logique</span>
+          </div>
+
+          <button class="skills-toggle" type="button" aria-label="Afficher plus de compétences">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="max-w-7xl mx-auto px-6 py-20">
+    <div class="mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-4 reveal">
+      <div>
+        <h2 class="section-title text-3xl md:text-4xl font-bold mt-3">Mes projets</h2>
+      </div>
+    </div>
+
+    <div class="grid xl:grid-cols-2 gap-6">
+      <article class="overflow-hidden rounded-[2rem] soft-border glass card-hover reveal">
+        <div class="h-52 project-cover p-6 flex flex-col justify-between">
+          <span class="w-fit px-3 py-1 rounded-full border border-white/15 bg-black/20 text-xs uppercase tracking-[0.25em] text-slate-200">Application web</span>
+          <div class="project-preview rounded-2xl p-4">
+          </div>
+        </div>
+        <div class="p-6">
+          <p class="text-sm text-pink-200 mb-2">Projet algorithmique et logique</p>
+          <h3 class="text-2xl font-bold">Correcteur automatique d'erreurs</h3>
+          <p class="text-sm leading-7 text-slate-300 mt-4">Développement d’un jeu web « Qui est-ce ? » en HTML et PHP intégrant un système de détection et de correction d’erreurs. 
+Les réponses de l’utilisateur sont encodées sous forme binaire puis analysées à l’aide d’opérations logiques (XOR) permettant de détecter et corriger automatiquement une incohérence.</p>
+          <div class="flex flex-wrap gap-3 mt-5">
+            <span class="tag px-3 py-1 rounded-full text-xs">HTML</span>
+            <span class="tag px-3 py-1 rounded-full text-xs">CSS</span>
+            <span class="tag px-3 py-1 rounded-full text-xs">PHP</span>
+            <span class="tag px-3 py-1 rounded-full text-xs">Logique binaire</span>
+          </div>
+          <div class="flex flex-wrap gap-3 mt-6">
+            <a href="https://github.com/Rayaneww/Projet-correcteur-automatique-d-erreurs" class="pink-button px-4 py-2 rounded-xl text-sm font-semibold">GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="overflow-hidden rounded-[2rem] soft-border glass card-hover reveal">
+        <div class="h-52 project-cover p-6 flex flex-col justify-between">
+          <span class="w-fit px-3 py-1 rounded-full border border-white/15 bg-black/20 text-xs uppercase tracking-[0.25em] text-slate-200">Application Java</span>
+          <div class="project-preview rounded-2xl p-4">
+          </div>
+        </div>
+        <div class="p-6">
+          <p class="text-sm text-pink-200 mb-2">Logique technique et rigueur</p>
+          <h3 class="text-2xl font-bold">Comparateur IP</h3>
+          <p class="text-sm leading-7 text-slate-300 mt-4">Conception d’une application en Java permettant de comparer des adresses IP et d’analyser leurs caractéristiques.</p>
+          <div class="flex flex-wrap gap-3 mt-5">
+            <span class="tag px-3 py-1 rounded-full text-xs">Java</span>
+            <span class="tag px-3 py-1 rounded-full text-xs">Algorithmie</span>
+            <span class="tag px-3 py-1 rounded-full text-xs">Réseau</span>
+          </div>
+          <div class="flex flex-wrap gap-3 mt-6">
+            <a href="https://github.com/MaelysLeBrun/TP-IP-Package" class="pink-button px-4 py-2 rounded-xl text-sm font-semibold">GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="overflow-hidden rounded-[2rem] soft-border glass card-hover reveal">
+        <div class="h-52 project-cover p-6 flex flex-col justify-between">
+          <span class="w-fit px-3 py-1 rounded-full border border-white/15 bg-black/20 text-xs uppercase tracking-[0.25em] text-slate-200">Jeu web</span>
+          <div class="project-preview rounded-2xl p-4">
+          </div>
+        </div>
+        <div class="p-6">
+          <p class="text-sm text-pink-200 mb-2">Front-end + logique de décision</p>
+          <h3 class="text-2xl font-bold">Morpion avec IA</h3>
+          <p class="text-sm leading-7 text-slate-300 mt-4">Développement d’un jeu de morpion en HTML, CSS et JavaScript avec un mode contre intelligence artificielle.</p>
+          <div class="flex flex-wrap gap-3 mt-5">
+            <span class="tag px-3 py-1 rounded-full text-xs">HTML</span>
+            <span class="tag px-3 py-1 rounded-full text-xs">CSS</span>
+            <span class="tag px-3 py-1 rounded-full text-xs">JavaScript</span>
+          </div>
+          <div class="flex flex-wrap gap-3 mt-6">
+            <a href="https://github.com/MaelysLeBrun/morpion" class="pink-button px-4 py-2 rounded-xl text-sm font-semibold">GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="overflow-hidden rounded-[2rem] soft-border glass card-hover reveal">
+        <div class="h-52 project-cover p-6 flex flex-col justify-between">
+          <span class="w-fit px-3 py-1 rounded-full border border-white/15 bg-black/20 text-xs uppercase tracking-[0.25em] text-slate-200">Projet Final</span>
+          <div class="project-preview rounded-2xl p-4">
+          </div>
+        </div>
+        <div class="p-6">
+          <p class="text-sm text-pink-200 mb-2">Projet de fin de BTS</p>
+          <h3 class="text-2xl font-bold">CVVEN</h3>
+          <p class="text-sm leading-7 text-slate-300 mt-4">Développement d’une application web permettant de générer et gérer des CV en ligne. 
+      Ce projet m’a permis de travailler sur la structuration des données, la gestion des informations utilisateur et la création d’une interface claire et fonctionnelle.</p>
+          <div class="flex flex-wrap gap-3 mt-5">
+            <span class="tag px-3 py-1 rounded-full text-xs">HTML</span>
+            <span class="tag px-3 py-1 rounded-full text-xs">CSS</span>
+            <span class="tag px-3 py-1 rounded-full text-xs">JavaScript</span>
+            <span class="tag px-3 py-1 rounded-full text-xs">MySQL</span>
+            <span class="tag px-3 py-1 rounded-full text-xs">PHP</span>         
+          </div>
+          <div class="flex flex-wrap gap-3 mt-6">
+            <a href="https://github.com/MaelysLeBrun/CVVEN" class="pink-button px-4 py-2 rounded-xl text-sm font-semibold">GitHub</a>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="mt-12 text-center">
+  <a href="https://github.com/MaelysLeBrun" target="_blank"
+    class="inline-flex items-center gap-3 px-6 py-3 rounded-2xl border border-white/10 bg-white/5 text-white font-semibold hover:text-pink-300 hover:border-pink-300/30 transition">
+
+    <!-- icône github -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55v-2.16c-3.2.7-3.88-1.54-3.88-1.54-.53-1.33-1.29-1.69-1.29-1.69-1.06-.73.08-.72.08-.72 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.1-.76.41-1.27.75-1.56-2.55-.29-5.23-1.27-5.23-5.64 0-1.25.45-2.27 1.2-3.07-.12-.29-.52-1.46.11-3.05 0 0 .98-.31 3.2 1.17a11.1 11.1 0 0 1 5.82 0c2.22-1.48 3.2-1.17 3.2-1.17.63 1.59.23 2.76.11 3.05.75.8 1.2 1.82 1.2 3.07 0 4.38-2.69 5.35-5.25 5.63.42.36.8 1.09.8 2.2v3.26c0 .3.21.66.79.55A11.52 11.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/>
+    </svg>
+    Voir tous mes projets sur GitHub !
+  </a>
+</div>
+  </section>
+
+  <section id="stages" class="max-w-7xl mx-auto px-6 py-20">
+  <div class="mb-10 reveal">
+    <h2 class="section-title text-3xl md:text-4xl font-bold mt-3">Mes stages</h2>
+    <p class="text-slate-400 leading-8 mt-6 max-w-4xl">
+      Mes stages m’ont permis de découvrir des contextes professionnels variés, de travailler sur des besoins concrets et de développer mes compétences en développement, en traitement de données et en adaptation à un environnement de travail réel.
+    </p>
+  </div>
+
+  <div class="grid xl:grid-cols-2 gap-6">
+    <article class="glass soft-border rounded-[2rem] p-7 card-hover reveal">
+      <div class="flex items-center justify-between gap-4 flex-wrap mb-5">
+        <span class="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs uppercase tracking-[0.25em] text-pink-200">
+          Stage 2026
+        </span>
+        <span class="text-sm text-slate-400">26 janvier 2026 – 20 mars 2026</span>
+      </div>
+
+      <h3 class="text-2xl font-bold">Loiselet & Daigremont</h3>
+      <p class="text-pink-200 text-sm mt-2">Service informatique · Stagiaire développeuse</p>
+
+      <p class="text-sm leading-7 text-slate-300 mt-5">
+        Lors de ce stage, j’ai participé à différents travaux liés aux outils internes de l’entreprise, en intervenant notamment sur des macros, des traitements de données et des ajustements sur des pages d’application.
+      </p>
+
+      <p class="text-sm leading-7 text-slate-300 mt-3">
+        J’ai également développé un programme permettant de répondre à une problématique liée à des PDF manquants, en recherchant et structurant une solution adaptée au besoin exprimé.
+      </p>
+
+      <div class="flex flex-wrap gap-3 mt-5">
+        <span class="tag px-3 py-1 rounded-full text-xs">LibreOffice Calc</span>
+        <span class="tag px-3 py-1 rounded-full text-xs">VS Code</span>
+        <span class="tag px-3 py-1 rounded-full text-xs">Macros</span>
+        <span class="tag px-3 py-1 rounded-full text-xs">IBM i / AS400</span>
+        <span class="tag px-3 py-1 rounded-full text-xs">Lodasi</span>
+        <span class="tag px-3 py-1 rounded-full text-xs">PDF</span>
+      </div>
+    </article>
+
+    <article class="glass soft-border rounded-[2rem] p-7 card-hover reveal">
+      <div class="flex items-center justify-between gap-4 flex-wrap mb-5">
+        <span class="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs uppercase tracking-[0.25em] text-pink-200">
+          Stage 2025
+        </span>
+        <span class="text-sm text-slate-400">Stage BTS SIO</span>
+      </div>
+
+      <h3 class="text-2xl font-bold">BUT</h3>
+      <p class="text-pink-200 text-sm mt-2">Service informatique · Stagiaire développeuse!</p>
+
+      <p class="text-sm leading-7 text-slate-300 mt-5">
+        Ce stage m’a permis de découvrir un nouvel environnement technique et de travailler sur des problématiques liées aux outils métiers et aux méthodes de travail en entreprise.
+      </p>
+
+      <p class="text-sm leading-7 text-slate-300 mt-3">
+        J’y ai développé ma capacité d’adaptation, mon autonomie et ma compréhension du fonctionnement d’un projet dans un cadre professionnel.
+      </p>
+
+      <div class="flex flex-wrap gap-3 mt-5">
+        <span class="tag px-3 py-1 rounded-full text-xs">Adaptation</span>
+        <span class="tag px-3 py-1 rounded-full text-xs">Outils métiers</span>
+        <span class="tag px-3 py-1 rounded-full text-xs">Autonomie</span>
+        <span class="tag px-3 py-1 rounded-full text-xs">Découverte professionnelle</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+  <section id="parcours" class="max-w-7xl mx-auto px-6 py-20">
+    <div class="glass soft-border rounded-[2rem] p-8 reveal">
+      <h2 class="section-title text-3xl font-bold mt-3">Parcours</h2>
+
+      <div class="mt-10 space-y-8">
+        <div class="relative pl-8">
+          <span class="absolute left-0 top-2 w-5 h-5 rounded-full border border-pink-300/50 bg-pink-300/20"></span>
+          <span class="absolute left-[9px] top-8 w-px h-[calc(100%+20px)] bg-white/15"></span>
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-pink-200">2025/2026</p>
+          <h3 class="text-lg font-semibold mt-2">Deuxième année de BTS SIO option SLAM</h3>
+          <p class="text-sm leading-7 text-slate-300 mt-2">Réalisation de projets concrets, le développement d’applications complètes et une première approche de la cybersécurité et des enjeux du numérique.</p>
+        </div>
+
+      <div class="mt-10 space-y-8">
+        <div class="relative pl-8">
+          <span class="absolute left-0 top-2 w-5 h-5 rounded-full border border-pink-300/50 bg-pink-300/20"></span>
+          <span class="absolute left-[9px] top-8 w-px h-[calc(100%+20px)] bg-white/15"></span>
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-pink-200">2024/2025</p>
+          <h3 class="text-lg font-semibold mt-2">Première année de BTS SIO option SLAM</h3>
+          <p class="text-sm leading-7 text-slate-300 mt-2">Montée en compétences en développement logiciel, bases de données et conception d’applications.</p>
+        </div>
+
+        <div class="relative pl-8">
+          <span class="absolute left-0 top-2 w-5 h-5 rounded-full border border-pink-300/50 bg-pink-300/20"></span>
+          <span class="absolute left-[9px] top-8 w-px h-[calc(100%+20px)] bg-white/15"></span>
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-pink-200">2023/2024</p>
+          <h3 class="text-lg font-semibold mt-2">BAC STMG SIG</h3>
+          <p class="text-sm leading-7 text-slate-300 mt-2">Diplôme obtenu avec mention Bien, qui m’a permis de découvrir les bases des systèmes informatiques, de la gestion des données et de la logique des organisations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="veille" class="max-w-7xl mx-auto px-6 py-20">
+    <div class="glass soft-border rounded-[2rem] p-8 reveal">
+      <p class="text-sm uppercase tracking-[0.3em] text-pink-200">Veille technologique</p>
+      <h2 class="section-title text-3xl font-bold mt-3">Droit, innovation et sécurité.</h2>
+
+      <p class="text-sm leading-7 text-slate-300 mt-6">
+        J’ai choisi d’orienter ma veille sur l’évolution du droit du numérique face aux innovations technologiques. L’essor de l’intelligence artificielle, des plateformes numériques, des outils de surveillance et des traitements massifs de données oblige aujourd’hui le droit à s’adapter en permanence.
+      </p>
+
+      <div class="mt-6 space-y-3">
+        <div class="rounded-2xl border border-white/10 bg-slate-900/60 p-4 text-sm text-slate-200">Régulation de l’intelligence artificielle</div>
+        <div class="rounded-2xl border border-white/10 bg-slate-900/60 p-4 text-sm text-slate-200">RGPD et protection des données</div>
+        <div class="rounded-2xl border border-white/10 bg-slate-900/60 p-4 text-sm text-slate-200">Cybersécurité et conformité</div>
+        <div class="rounded-2xl border border-white/10 bg-slate-900/60 p-4 text-sm text-slate-200">Responsabilité liée aux outils numériques</div>
+        <div class="rounded-2xl border border-white/10 bg-slate-900/60 p-4 text-sm text-slate-200">Éthique des technologies</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="max-w-7xl mx-auto px-6 py-20">
+    <div class="rounded-[2.5rem] border border-white/10 bg-[linear-gradient(135deg,rgba(244,114,182,0.08),rgba(255,255,255,0.03))] backdrop-blur-2xl p-8 md:p-12 reveal">
+          <div class="mt-4 grid lg:grid-cols-[1fr_0.9fr] gap-8 items-end">
+        <div>
+          <h2 class="section-title text-3xl md:text-4xl font-bold">Contactez-moi !</h2>
+          <p class="text-base leading-8 text-slate-300 mt-5 max-w-2xl">
+            Vous souhaitez échanger à propos de mon profil, de mes projets ou d’une opportunité de stage, d’alternance ou de poursuite d’études ? Je serais ravie de discuter de développement, de cybersécurité et des enjeux numériques.
+          </p>
+        </div>
+
+        <div class="grid gap-4 rounded-[2rem] border border-white/10 bg-slate-950/60 p-6">
+          <div>
+            <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Email</p>
+            <a href="mailto:tonmail@email.com" class="mt-2 block text-white hover:text-pink-300 transition">maelys.lebrun.pro@gmail.com</a>
+          </div>
+          <div>
+            <p class="text-xs uppercase tracking-[0.25em] text-slate-500">GitHub</p>
+            <a href="https://github.com/MaelysLeBrun" target="_blank" class="mt-2 block text-white hover:text-pink-300 transition">https://github.com/MaelysLeBrun</a>
+          </div>
+          <div>
+            <p class="text-xs uppercase tracking-[0.25em] text-slate-500">LinkedIn</p>
+            <a href="https://www.linkedin.com/in/maelys-le-brun/" target="_blank" class="mt-2 block text-white hover:text-pink-300 transition">https://www.linkedin.com/in/maelys-le-brun/</a>
+          </div>
+          <div>
+            <p class="text-xs uppercase tracking-[0.25em] text-slate-500">CV</p>
+            <a href="CV_Maelys-Le-Brun.pdf" download class="mt-2 block text-white hover:text-pink-300 transition">Télécharger mon CV</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="px-6 pb-10">
+    <div class="max-w-7xl mx-auto pt-6 border-t border-white/10 flex flex-col md:flex-row gap-4 items-center justify-between text-sm text-slate-400">
+      <p>© 2026 Maelys Le Brun. Tous droits réservés.</p>
+      <p>Développement web · Cybersécurité · Droit du numérique</p>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top fixed bottom-6 right-6 z-40 w-12 h-12 rounded-2xl border border-white/10 bg-slate-900/80 backdrop-blur flex items-center justify-center text-white hover:text-pink-300 hover:border-pink-300/30 transition">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 15l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <script>
+    const menuButton = document.getElementById('menuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    menuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    const reveals = document.querySelectorAll('.reveal');
+
+    const revealOnScroll = () => {
+      const trigger = window.innerHeight * 0.88;
+      reveals.forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        if (top < trigger) {
+          el.classList.add('visible');
+        }
+      });
+    };
+
+    revealOnScroll();
+    window.addEventListener('scroll', revealOnScroll);
+
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    const setActiveLink = () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 140;
+        const sectionHeight = section.offsetHeight;
+        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        const href = link.getAttribute('href').replace('#', '');
+        if (href === current) {
+          link.classList.add('active');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', setActiveLink);
+    setActiveLink();
+
+    const backToTop = document.getElementById('backToTop');
+
+    const toggleBackToTop = () => {
+      if (window.scrollY > 500) {
+        backToTop.classList.add('show');
+      } else {
+        backToTop.classList.remove('show');
+      }
+    };
+
+    window.addEventListener('scroll', toggleBackToTop);
+    toggleBackToTop();
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+        const skillsToggles = document.querySelectorAll('.skills-toggle');
+
+    skillsToggles.forEach(button => {
+      button.addEventListener('click', () => {
+        const group = button.closest('.skills-group');
+        const hiddenBlock = group.querySelector('.skills-hidden');
+
+        hiddenBlock.classList.toggle('open');
+        button.classList.toggle('open');
+      });
+    });
+  </script>
+
+</body>
+</html>
