@@ -266,6 +266,74 @@
     .card-hover:hover .project-card-image {
       transform: scale(1.05);
     }
+
+    .cvven-carousel {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      margin-top: 0;
+      transform: translateY(8px);
+      transition: max-height 0.35s ease, opacity 0.25s ease, margin-top 0.25s ease, transform 0.25s ease;
+    }
+
+    .cvven-carousel.open {
+      max-height: 380px;
+      opacity: 1;
+      margin-top: 14px;
+      transform: translateY(0);
+    }
+
+    .cvven-slide {
+      display: none;
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 1rem;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .cvven-slide.active {
+      display: block;
+    }
+
+    .cvven-control {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(15, 23, 42, 0.8);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.2s ease;
+    }
+
+    .cvven-control:hover {
+      background: rgba(244, 114, 182, 0.15);
+      border-color: rgba(244, 114, 182, 0.35);
+    }
+
+    .cvven-dots {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .cvven-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      border: none;
+      background: rgba(255,255,255,0.35);
+      transition: 0.2s ease;
+    }
+
+    .cvven-dot.active {
+      width: 24px;
+      background: linear-gradient(to right, #ec4899, #f472b6);
+    }
   </style>
 </head>
 
@@ -800,7 +868,7 @@
           <p class="text-sm text-pink-200 mb-2">Projet de groupe de fin de BTS</p>
           <h3 class="text-2xl font-bold">CVVEN</h3>
           <p class="text-sm leading-7 text-slate-300 mt-4">
-            Développement d’une application web permettant de générer et gérer des CV en ligne. Ce projet m’a permis de travailler sur la structuration des données, la gestion des informations utilisateur et la création d’une interface claire et fonctionnelle.
+          Projet web développé avec Code Igniter, connecté à une base de données permettant la gestion et la réservation de chambres d'hôtel ainsi que la gestion d’un espace administrateur pour les réservations et les chambres.
           </p>
           <div class="flex flex-wrap gap-3 mt-5">
             <span class="tag px-3 py-1 rounded-full text-xs">HTML</span>
@@ -817,6 +885,48 @@
               data-pdf="CVVEN PROJET.pdf">
               Voir la fiche projet
             </button>
+            <button
+              id="cvvenCarouselToggle"
+              type="button"
+              class="outline-button px-4 py-2 rounded-xl border border-white/15 bg-white/5 text-white text-sm font-semibold">
+              Voir les images
+            </button>
+          
+          </div>
+
+          <div id="cvvenCarousel" class="cvven-carousel">
+            <div class="relative">
+              <img src="cvven1.jpg" alt="CVVEN - écran d'accueil" class="cvven-slide active">
+              <img src="cvven2.jpg" alt="CVVEN - écran de réservation" class="cvven-slide">
+              <img src="cvven3.jpg" alt="CVVEN - écran administrateur" class="cvven-slide">
+              <img src="cvven4.jpg" alt="CVVEN - écran d'accueil" class="cvven-slide active">
+              <img src="cvven5.jpg" alt="CVVEN - écran de réservation" class="cvven-slide">
+              <img src="cvven6.jpg" alt="CVVEN - écran administrateur" class="cvven-slide">
+              <img src="cvven7.jpg" alt="CVVEN - écran d'accueil" class="cvven-slide active">
+              <img src="cvven8.jpg" alt="CVVEN - écran de réservation" class="cvven-slide">
+              <img src="cvven9.jpg" alt="CVVEN - écran administrateur" class="cvven-slide">
+              <img src="cvven10.jpg" alt="CVVEN - écran d'accueil" class="cvven-slide active">
+
+
+              <div class="absolute inset-x-0 bottom-3 px-3 flex items-center justify-between">
+                <button id="cvvenPrev" type="button" class="cvven-control" aria-label="Image précédente">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                  </svg>
+                </button>
+                <button id="cvvenNext" type="button" class="cvven-control" aria-label="Image suivante">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="cvven-dots mt-3">
+              <button type="button" class="cvven-dot active" aria-label="Image 1"></button>
+              <button type="button" class="cvven-dot" aria-label="Image 2"></button>
+              <button type="button" class="cvven-dot" aria-label="Image 3"></button>
+            </div>
           </div>
         </div>
       </article>
@@ -1142,6 +1252,50 @@
         closeModal();
       }
     });
+
+    const cvvenCarouselToggle = document.getElementById('cvvenCarouselToggle');
+    const cvvenCarousel = document.getElementById('cvvenCarousel');
+    const cvvenSlides = document.querySelectorAll('.cvven-slide');
+    const cvvenDots = document.querySelectorAll('.cvven-dot');
+    const cvvenPrev = document.getElementById('cvvenPrev');
+    const cvvenNext = document.getElementById('cvvenNext');
+    let cvvenCurrentSlide = 0;
+
+    const updateCvvenCarousel = (index) => {
+      cvvenSlides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+
+      cvvenDots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    };
+
+    const goToCvvenSlide = (index) => {
+      cvvenCurrentSlide = (index + cvvenSlides.length) % cvvenSlides.length;
+      updateCvvenCarousel(cvvenCurrentSlide);
+    };
+
+    if (cvvenCarouselToggle && cvvenCarousel && cvvenSlides.length > 0) {
+      cvvenCarouselToggle.addEventListener('click', () => {
+        const isOpen = cvvenCarousel.classList.toggle('open');
+        cvvenCarouselToggle.textContent = isOpen ? 'Masquer les images' : 'Voir les images';
+      });
+
+      cvvenPrev.addEventListener('click', () => {
+        goToCvvenSlide(cvvenCurrentSlide - 1);
+      });
+
+      cvvenNext.addEventListener('click', () => {
+        goToCvvenSlide(cvvenCurrentSlide + 1);
+      });
+
+      cvvenDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          goToCvvenSlide(index);
+        });
+      });
+    }
   </script>
 
 </body>
