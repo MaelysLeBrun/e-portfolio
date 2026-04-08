@@ -87,19 +87,6 @@
       border: 1px solid rgba(255,255,255,0.08);
     }
 
-    .project-cover {
-      background:
-        radial-gradient(circle at top left, rgba(255,255,255,0.09), transparent 32%),
-        linear-gradient(135deg, rgba(236, 72, 153, 0.36), rgba(244, 114, 182, 0.16), rgba(15, 23, 42, 0.96));
-    }
-
-    .project-preview {
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)),
-        rgba(2, 6, 23, 0.58);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
     .hero-blob {
       position: absolute;
       border-radius: 999px;
@@ -129,6 +116,14 @@
     @keyframes floatBlob {
       0%, 100% { transform: translateY(0px) translateX(0px); }
       50% { transform: translateY(-10px) translateX(8px); }
+    }
+
+    .hero-photo-frame {
+      position: relative;
+      border-radius: 999px;
+      padding: 8px;
+      background: linear-gradient(135deg, rgba(236,72,153,0.45), rgba(232,121,249,0.18));
+      box-shadow: 0 25px 80px rgba(236, 72, 153, 0.18);
     }
 
     .reveal {
@@ -204,15 +199,7 @@
       letter-spacing: 0.04em;
     }
 
-    .project-image {
-      width: 100%;
-      height: 140px;
-      object-fit: cover;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-        .skills-hidden {
+    .skills-hidden {
       max-height: 0;
       overflow: hidden;
       opacity: 0;
@@ -261,14 +248,24 @@
     }
 
     .skills-hidden::-webkit-scrollbar {
-  width: 6px;
-}
+      width: 6px;
+    }
 
-.skills-hidden::-webkit-scrollbar-thumb {
-  background: rgba(244, 114, 182, 0.4);
-  border-radius: 999px;
-}
-}
+    .skills-hidden::-webkit-scrollbar-thumb {
+      background: rgba(244, 114, 182, 0.4);
+      border-radius: 999px;
+    }
+
+    .project-card-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .card-hover:hover .project-card-image {
+      transform: scale(1.05);
+    }
   </style>
 </head>
 
@@ -312,71 +309,72 @@
   </nav>
 
   <section class="min-h-screen flex items-center pt-28 px-6 relative">
-  <div class="hero-blob blob-1"></div>
-  <div class="hero-blob blob-2"></div>
+    <div class="hero-blob blob-1"></div>
+    <div class="hero-blob blob-2"></div>
 
-  <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
-    <div class="reveal order-2 lg:order-1">
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-pink-400/30 bg-pink-400/10 text-pink-200 text-sm mb-6">
-        Développement · Cybersécurité · Droit du numérique
+    <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
+      <div class="reveal order-2 lg:order-1">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-pink-400/30 bg-pink-400/10 text-pink-200 text-sm mb-6">
+          Développement · Cybersécurité · Droit du numérique
+        </div>
+
+        <h1 class="text-4xl md:text-5xl xl:text-6xl font-black leading-tight tracking-tight mb-6">
+          Maelys Le Brun
+        </h1>
+
+        <p class="text-lg md:text-xl text-slate-300 leading-8 max-w-2xl mb-8">
+          Étudiante en BTS SIO option SLAM, passionnée par le développement, la cybersécurité et le droit du numérique.
+        </p>
+
+        <div class="flex flex-wrap gap-4 mb-10">
+          <a href="#projects" class="pink-button px-6 py-3 rounded-2xl font-semibold">
+            Voir mes projets
+          </a>
+          <a href="CV_Maelys-Le-Brun.pdf" download class="outline-button px-6 py-3 rounded-2xl border border-white/15 bg-white/5 text-white font-semibold">
+            Télécharger mon CV
+          </a>
+          <a href="#contact" class="outline-button px-6 py-3 rounded-2xl border border-white/15 bg-white/5 text-white font-semibold">
+            Me contacter
+          </a>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-4 max-w-3xl">
+          <div class="glass soft-border rounded-3xl p-5">
+            <p class="text-3xl font-bold">4+</p>
+            <p class="text-sm text-slate-400 mt-2">projets réalisés</p>
+          </div>
+          <div class="glass soft-border rounded-3xl p-5">
+            <p class="text-3xl font-bold">10+</p>
+            <p class="text-sm text-slate-400 mt-2">certifications</p>
+          </div>
+          <div class="glass soft-border rounded-3xl p-5">
+            <p class="text-3xl font-bold">2</p>
+            <p class="text-sm text-slate-400 mt-2">stages effectués</p>
+          </div>
+        </div>
       </div>
 
-      <h1 class="text-4xl md:text-5xl xl:text-6xl font-black leading-tight tracking-tight mb-6">
-        Maelys Le Brun
-      </h1>
+      <div class="relative reveal order-1 lg:order-2 flex justify-center">
+        <div class="absolute -inset-6 bg-gradient-to-br from-pink-500/20 to-fuchsia-500/20 blur-3xl rounded-full"></div>
 
-      <p class="text-lg md:text-xl text-slate-300 leading-8 max-w-2xl mb-8">
-        Étudiante en BTS SIO option SLAM, passionnée par le développement, la cybersécurité et le droit du numérique.
-      </p>
+        <div class="relative">
+          <div class="hero-photo-frame">
+            <div class="w-[290px] h-[290px] md:w-[360px] md:h-[360px] rounded-full overflow-hidden border border-white/10 shadow-2xl bg-slate-900">
+              <img src="images/maelys.jpg" alt="Photo de Maelys Le Brun" class="w-full h-full object-cover">
+            </div>
+          </div>
 
-      <div class="flex flex-wrap gap-4 mb-10">
-        <a href="#projects" class="pink-button px-6 py-3 rounded-2xl font-semibold">
-          Voir mes projets
-        </a>
-        <a href="CV_Maelys-Le-Brun.pdf" download class="outline-button px-6 py-3 rounded-2xl border border-white/15 bg-white/5 text-white font-semibold">
-          Télécharger mon CV
-        </a>
-        <a href="#contact" class="outline-button px-6 py-3 rounded-2xl border border-white/15 bg-white/5 text-white font-semibold">
-          Me contacter
-        </a>
-      </div>
-
-      <div class="grid sm:grid-cols-3 gap-4 max-w-3xl">
-        <div class="glass soft-border rounded-3xl p-5">
-          <p class="text-3xl font-bold">4+</p>
-          <p class="text-sm text-slate-400 mt-2">projets réalisés</p>
-        </div>
-        <div class="glass soft-border rounded-3xl p-5">
-          <p class="text-3xl font-bold">10+</p>
-          <p class="text-sm text-slate-400 mt-2">certifications</p>
-        </div>
-        <div class="glass soft-border rounded-3xl p-5">
-          <p class="text-3xl font-bold">2</p>
-          <p class="text-sm text-slate-400 mt-2">stages effectués</p>
+          <div class="mt-6 glass soft-border rounded-[1.8rem] p-5 max-w-md mx-auto text-center">
+            <p class="text-sm uppercase tracking-[0.25em] text-pink-300">Profil</p>
+            <h2 class="text-2xl font-bold mt-3">Développeuse en construction</h2>
+            <p class="text-sm leading-7 text-slate-300 mt-3">
+              Un profil en évolution, à l’interface entre la technique, la sécurité et les enjeux juridiques du numérique.
+            </p>
+          </div>
         </div>
       </div>
     </div>
-
-    <div class="relative reveal order-1 lg:order-2 flex justify-center">
-      <div class="absolute -inset-6 bg-gradient-to-br from-pink-500/20 to-fuchsia-500/20 blur-3xl rounded-full"></div>
-
-      <div class="hero-photo-frame">
-  <div class="w-[290px] h-[290px] md:w-[360px] md:h-[360px] rounded-full overflow-hidden border border-white/10 shadow-2xl bg-slate-900">
-    <img src="maelys.jpg" alt="Photo de Maelys Le Brun" class="w-full h-full object-cover">
-  </div>
-</div>
-
-        <div class="mt-6 glass soft-border rounded-[1.8rem] p-5 max-w-md mx-auto text-center">
-          <p class="text-sm uppercase tracking-[0.25em] text-pink-300">Profil</p>
-          <h2 class="text-2xl font-bold mt-3">Développeuse en construction</h2>
-          <p class="text-sm leading-7 text-slate-300 mt-3">
-            Un profil en évolution, à l’interface entre la technique, la sécurité et les enjeux juridiques du numérique.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
   <section id="about" class="max-w-7xl mx-auto px-6 py-20">
     <div class="grid lg:grid-cols-[0.85fr_1.15fr] gap-6">
@@ -393,6 +391,7 @@
         </p>
         <p class="leading-8 mt-4">
           Mon projet professionnel est de poursuivre mes études en droit afin de me spécialiser dans le droit du numérique. Mon objectif est de développer un profil à l’interface entre la technologie et le cadre juridique qui l’encadre, afin de mieux comprendre et accompagner les enjeux liés à la cybersécurité, aux données personnelles et à la régulation des technologies.
+        </p>
         <p class="leading-8 mt-4">
           À travers ce portfolio, je souhaite montrer mon évolution, mes réalisations concrètes et ma manière de structurer un projet de façon sérieuse.
         </p>
@@ -404,10 +403,12 @@
     <div class="mb-12 reveal">
       <h2 class="section-title text-3xl md:text-4xl font-bold mt-3">Compétences</h2>
       <p class="text-slate-400 leading-8 mt-6 max-w-4xl">
-Cette section reflète les compétences que j’ai développées au fil de mes projets, les outils que j’utilise et les domaines qui m’intéressent, notamment la cybersécurité et le droit du numérique.      </p>
+        Cette section reflète les compétences que j’ai développées au fil de mes projets, les outils que j’utilise et les domaines qui m’intéressent, notamment la cybersécurité et le droit du numérique.
+      </p>
     </div>
 
-          <div class="glass soft-border rounded-[2rem] p-7 card-hover reveal">
+    <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+      <div class="glass soft-border rounded-[2rem] p-7 card-hover reveal">
         <div class="skill-icon-wrap">
           <svg xmlns="http://www.w3.org/2000/svg" class="skill-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
             <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l-3 3 3 3m8-6l3 3-3 3M13 6l-2 12"/>
@@ -444,7 +445,7 @@ Cette section reflète les compétences que j’ai développées au fil de mes p
         </div>
       </div>
 
-            <div class="glass soft-border rounded-[2rem] p-7 card-hover reveal">
+      <div class="glass soft-border rounded-[2rem] p-7 card-hover reveal">
         <div class="skill-icon-wrap">
           <svg xmlns="http://www.w3.org/2000/svg" class="skill-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4z"/>
@@ -478,7 +479,7 @@ Cette section reflète les compétences que j’ai développées au fil de mes p
         </div>
       </div>
 
-            <div class="glass soft-border rounded-[2rem] p-7 card-hover reveal">
+      <div class="glass soft-border rounded-[2rem] p-7 card-hover reveal">
         <div class="skill-icon-wrap">
           <svg xmlns="http://www.w3.org/2000/svg" class="skill-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M7 4v6m10-6v6M5 11h14v8H5z"/>
@@ -518,7 +519,7 @@ Cette section reflète les compétences que j’ai développées au fil de mes p
         </div>
       </div>
 
-            <div class="glass soft-border rounded-[2rem] p-7 card-hover reveal">
+      <div class="glass soft-border rounded-[2rem] p-7 card-hover reveal">
         <div class="skill-icon-wrap">
           <svg xmlns="http://www.w3.org/2000/svg" class="skill-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2"/>
@@ -553,7 +554,7 @@ Cette section reflète les compétences que j’ai développées au fil de mes p
         </div>
       </div>
 
-            <div class="glass soft-border rounded-[2rem] p-7 card-hover reveal">
+      <div class="glass soft-border rounded-[2rem] p-7 card-hover reveal">
         <div class="skill-icon-wrap">
           <svg xmlns="http://www.w3.org/2000/svg" class="skill-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"/>
@@ -616,8 +617,8 @@ Cette section reflète les compétences que j’ai développées au fil de mes p
                 <span>Certification PIX - Indépendant 2</span>
               </div>
               <div class="cert-item">
-                <div class="cert-badge">Passe ton hack</div>
-                <span>Première place de l'académie de Créteil et huitième nationale</span>
+                <div class="cert-badge">CTF</div>
+                <span>Passe Ton Hack — Première place de l'académie de Créteil</span>
               </div>
             </div>
           </div>
@@ -630,7 +631,7 @@ Cette section reflète les compétences que j’ai développées au fil de mes p
         </div>
       </div>
 
-            <div class="glass soft-border rounded-[2rem] p-7 card-hover reveal">
+      <div class="glass soft-border rounded-[2rem] p-7 card-hover reveal">
         <div class="skill-icon-wrap">
           <svg xmlns="http://www.w3.org/2000/svg" class="skill-icon" fill="none" viewBox="0 0 24 24" stroke-width="1.8">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 11c0-3 2-5 5-5m-10 0c3 0 5 2 5 5m0 0v7m0-7c0 3-2 5-5 5m10 0c-3 0-5-2-5-5"/>
@@ -675,16 +676,20 @@ Cette section reflète les compétences que j’ai développées au fil de mes p
 
     <div class="grid xl:grid-cols-2 gap-6">
       <article class="overflow-hidden rounded-[2rem] soft-border glass card-hover reveal">
-        <div class="h-52 project-cover p-6 flex flex-col justify-between">
-          <span class="w-fit px-3 py-1 rounded-full border border-white/15 bg-black/20 text-xs uppercase tracking-[0.25em] text-slate-200">Application web</span>
-          <div class="project-preview rounded-2xl p-4">
-          </div>
+        <div class="relative h-52 overflow-hidden">
+          <img src="images/correcteur-erreurs.jpg" alt="Aperçu du projet Correcteur automatique d'erreurs" class="project-card-image">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent"></div>
+          <span class="absolute top-4 left-4 w-fit px-3 py-1 rounded-full border border-white/15 bg-black/30 text-xs uppercase tracking-[0.25em] text-slate-200 backdrop-blur-md">
+            Application web
+          </span>
         </div>
+
         <div class="p-6">
           <p class="text-sm text-pink-200 mb-2">Projet algorithmique et logique</p>
           <h3 class="text-2xl font-bold">Correcteur automatique d'erreurs</h3>
-          <p class="text-sm leading-7 text-slate-300 mt-4">Développement d’un jeu web « Qui est-ce ? » en HTML et PHP intégrant un système de détection et de correction d’erreurs. 
-Les réponses de l’utilisateur sont encodées sous forme binaire puis analysées à l’aide d’opérations logiques (XOR) permettant de détecter et corriger automatiquement une incohérence.</p>
+          <p class="text-sm leading-7 text-slate-300 mt-4">
+            Développement d’un jeu web « Qui est-ce ? » en HTML et PHP intégrant un système de détection et de correction d’erreurs. Les réponses de l’utilisateur sont encodées sous forme binaire puis analysées à l’aide d’opérations logiques permettant de détecter et corriger automatiquement une incohérence.
+          </p>
           <div class="flex flex-wrap gap-3 mt-5">
             <span class="tag px-3 py-1 rounded-full text-xs">HTML</span>
             <span class="tag px-3 py-1 rounded-full text-xs">CSS</span>
@@ -692,196 +697,208 @@ Les réponses de l’utilisateur sont encodées sous forme binaire puis analysé
             <span class="tag px-3 py-1 rounded-full text-xs">Logique binaire</span>
           </div>
           <div class="flex flex-wrap gap-3 mt-6">
-  <a href="https://github.com/Rayaneww/Projet-correcteur-automatique-d-erreurs" class="pink-button px-4 py-2 rounded-xl text-sm font-semibold">GitHub</a>
-  <button
-    class="open-pdf outline-button px-4 py-2 rounded-xl border border-white/15 bg-white/5 text-white text-sm font-semibold"
-    data-title="Fiche projet — Correcteur automatique d'erreurs"
-    data-pdf="Qui est-ce.pdf">
-    Voir la fiche projet
-  </button>
-</div>
+            <a href="https://github.com/Rayaneww/Projet-correcteur-automatique-d-erreurs" target="_blank" class="pink-button px-4 py-2 rounded-xl text-sm font-semibold">GitHub</a>
+            <button
+              class="open-pdf outline-button px-4 py-2 rounded-xl border border-white/15 bg-white/5 text-white text-sm font-semibold"
+              data-title="Fiche projet — Correcteur automatique d'erreurs"
+              data-pdf="pdf/qui-est-ce.pdf">
+              Voir la fiche projet
+            </button>
+          </div>
         </div>
       </article>
 
       <article class="overflow-hidden rounded-[2rem] soft-border glass card-hover reveal">
-        <div class="h-52 project-cover p-6 flex flex-col justify-between">
-          <span class="w-fit px-3 py-1 rounded-full border border-white/15 bg-black/20 text-xs uppercase tracking-[0.25em] text-slate-200">Application Java</span>
-          <div class="project-preview rounded-2xl p-4">
-          </div>
+        <div class="relative h-52 overflow-hidden">
+          <img src="images/booktrack.jpg" alt="Aperçu du projet BookTrack" class="project-card-image">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent"></div>
+          <span class="absolute top-4 left-4 w-fit px-3 py-1 rounded-full border border-white/15 bg-black/30 text-xs uppercase tracking-[0.25em] text-slate-200 backdrop-blur-md">
+            Application web
+          </span>
         </div>
+
         <div class="p-6">
-          <p class="text-sm text-pink-200 mb-2">Logique technique et rigueur</p>
-          <h3 class="text-2xl font-bold">Comparateur IP</h3>
-          <p class="text-sm leading-7 text-slate-300 mt-4">Conception d’une application en Java permettant de comparer des adresses IP et d’analyser leurs caractéristiques.</p>
+          <p class="text-sm text-pink-200 mb-2">Projet personnel</p>
+          <h3 class="text-2xl font-bold">BookTrack</h3>
+          <p class="text-sm leading-7 text-slate-300 mt-4">
+            Développement d’une application web permettant de rechercher des livres, d’organiser sa bibliothèque personnelle, de suivre ses lectures et de gérer ses envies de lecture dans une interface moderne et intuitive.
+          </p>
+          <p class="text-sm leading-7 text-slate-300 mt-3">
+            Ce projet m’a permis de travailler la gestion des routes, l’affichage dynamique des données, la structuration des templates, l’expérience utilisateur ainsi que la logique métier autour du suivi de lecture.
+          </p>
           <div class="flex flex-wrap gap-3 mt-5">
-            <span class="tag px-3 py-1 rounded-full text-xs">Java</span>
-            <span class="tag px-3 py-1 rounded-full text-xs">Algorithmie</span>
-            <span class="tag px-3 py-1 rounded-full text-xs">Réseau</span>
+            <span class="tag px-3 py-1 rounded-full text-xs">Python</span>
+            <span class="tag px-3 py-1 rounded-full text-xs">Flask</span>
+            <span class="tag px-3 py-1 rounded-full text-xs">HTML</span>
+            <span class="tag px-3 py-1 rounded-full text-xs">CSS</span>
+            <span class="tag px-3 py-1 rounded-full text-xs">JavaScript</span>
+            <span class="tag px-3 py-1 rounded-full text-xs">API</span>
           </div>
           <div class="flex flex-wrap gap-3 mt-6">
-  <a href="https://github.com/MaelysLeBrun/TP-IP-Package" class="pink-button px-4 py-2 rounded-xl text-sm font-semibold">GitHub</a>
-  <button
-    class="open-pdf outline-button px-4 py-2 rounded-xl border border-white/15 bg-white/5 text-white text-sm font-semibold"
-    data-title="Fiche projet — Comparateur IP"
-    data-pdf="pdf/comparateur-ip.pdf">
-    Voir la fiche projet
-  </button>
-</div>
+            <a href="https://github.com/MaelysLeBrun/booktrack" target="_blank" class="pink-button px-4 py-2 rounded-xl text-sm font-semibold">GitHub</a>
+            <button
+              class="open-pdf outline-button px-4 py-2 rounded-xl border border-white/15 bg-white/5 text-white text-sm font-semibold"
+              data-title="Fiche projet — BookTrack"
+              data-pdf="pdf/booktrack.pdf">
+              Voir la fiche projet
+            </button>
+          </div>
         </div>
       </article>
 
       <article class="overflow-hidden rounded-[2rem] soft-border glass card-hover reveal">
-  <div class="h-52 project-cover p-6 flex flex-col justify-between">
-    <span class="w-fit px-3 py-1 rounded-full border border-white/15 bg-black/20 text-xs uppercase tracking-[0.25em] text-slate-200">
-      Application WEB
-    </span>
-  </div>
+        <div class="relative h-52 overflow-hidden">
+          <img src="images/office-tourisme.jpg" alt="Aperçu du projet Office de Tourisme" class="project-card-image">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent"></div>
+          <span class="absolute top-4 left-4 w-fit px-3 py-1 rounded-full border border-white/15 bg-black/30 text-xs uppercase tracking-[0.25em] text-slate-200 backdrop-blur-md">
+            Application web
+          </span>
+        </div>
 
-  <div class="p-6">
-    <p class="text-sm text-pink-200 mb-2">Projet personnel du BTS SIO</p>
+        <div class="p-6">
+          <p class="text-sm text-pink-200 mb-2">Projet personnel du BTS SIO</p>
+          <h3 class="text-2xl font-bold">Application Office de Tourisme</h3>
 
-    <h3 class="text-2xl font-bold">Application Office de Tourisme</h3>
+          <p class="text-sm leading-7 text-slate-300 mt-4">
+            Développement d’une application web permettant de consulter des activités touristiques et de gérer leur affichage. Le projet inclut une interface utilisateur, un espace administrateur, ainsi qu’une gestion des données via une base SQLite.
+          </p>
 
-    <p class="text-sm leading-7 text-slate-300 mt-4">
-      Développement d’une application web permettant de consulter des activités touristiques et de gérer leur affichage.
-      Le projet inclut une interface utilisateur, un espace administrateur, ainsi qu’une gestion des données via une base SQLite.
-    </p>
+          <p class="text-sm leading-7 text-slate-300 mt-3">
+            Ce projet m’a permis de travailler sur la structuration d’une application complète, la gestion des routes avec Flask, l’organisation des templates et la mise en place d’une logique métier cohérente.
+          </p>
 
-    <p class="text-sm leading-7 text-slate-300 mt-3">
-      Ce projet m’a permis de travailler sur la structuration d’une application complète, la gestion des routes avec Flask,
-      l’organisation des templates et la mise en place d’une logique métier cohérente.
-    </p>
+          <div class="flex flex-wrap gap-3 mt-5">
+            <span class="tag px-3 py-1 rounded-full text-xs">Python</span>
+            <span class="tag px-3 py-1 rounded-full text-xs">Flask</span>
+            <span class="tag px-3 py-1 rounded-full text-xs">SQLite</span>
+            <span class="tag px-3 py-1 rounded-full text-xs">HTML</span>
+            <span class="tag px-3 py-1 rounded-full text-xs">CSS</span>
+            <span class="tag px-3 py-1 rounded-full text-xs">Bootstrap</span>
+          </div>
 
-    <div class="flex flex-wrap gap-3 mt-5">
-      <span class="tag px-3 py-1 rounded-full text-xs">Python</span>
-      <span class="tag px-3 py-1 rounded-full text-xs">Flask</span>
-      <span class="tag px-3 py-1 rounded-full text-xs">SQLite</span>
-      <span class="tag px-3 py-1 rounded-full text-xs">HTML</span>
-      <span class="tag px-3 py-1 rounded-full text-xs">CSS</span>
-      <span class="tag px-3 py-1 rounded-full text-xs">Bootstrap</span>
-    </div>
-
-    <div class="flex flex-wrap gap-3 mt-6">
-  <a href="https://github.com/MaelysLeBrun/visitlocal" class="pink-button px-4 py-2 rounded-xl text-sm font-semibold">GitHub</a>
-  <button
-    class="open-pdf outline-button px-4 py-2 rounded-xl border border-white/15 bg-white/5 text-white text-sm font-semibold"
-    data-title="Fiche projet — Application Office de Tourisme"
-    data-pdf="pdf/office-tourisme.pdf">
-    Voir la fiche projet
-  </button>
-</div>
-  </div>
-</article>
-
-      <article class="overflow-hidden rounded-[2rem] soft-border glass card-hover reveal">
-        <div class="h-52 project-cover p-6 flex flex-col justify-between">
-          <span class="w-fit px-3 py-1 rounded-full border border-white/15 bg-black/20 text-xs uppercase tracking-[0.25em] text-slate-200">Projet Final</span>
-          <div class="project-preview rounded-2xl p-4">
+          <div class="flex flex-wrap gap-3 mt-6">
+            <a href="https://github.com/MaelysLeBrun/visitlocal" target="_blank" class="pink-button px-4 py-2 rounded-xl text-sm font-semibold">GitHub</a>
+            <button
+              class="open-pdf outline-button px-4 py-2 rounded-xl border border-white/15 bg-white/5 text-white text-sm font-semibold"
+              data-title="Fiche projet — Application Office de Tourisme"
+              data-pdf="pdf/office-tourisme.pdf">
+              Voir la fiche projet
+            </button>
           </div>
         </div>
+      </article>
+
+      <article class="overflow-hidden rounded-[2rem] soft-border glass card-hover reveal">
+        <div class="relative h-52 overflow-hidden">
+          <img src="images/cvven.jpg" alt="Aperçu du projet CVVEN" class="project-card-image">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent"></div>
+          <span class="absolute top-4 left-4 w-fit px-3 py-1 rounded-full border border-white/15 bg-black/30 text-xs uppercase tracking-[0.25em] text-slate-200 backdrop-blur-md">
+            Projet final
+          </span>
+        </div>
+
         <div class="p-6">
           <p class="text-sm text-pink-200 mb-2">Projet de groupe de fin de BTS</p>
           <h3 class="text-2xl font-bold">CVVEN</h3>
-          <p class="text-sm leading-7 text-slate-300 mt-4">Développement d’une application web permettant de générer et gérer des CV en ligne. 
-      Ce projet m’a permis de travailler sur la structuration des données, la gestion des informations utilisateur et la création d’une interface claire et fonctionnelle.</p>
+          <p class="text-sm leading-7 text-slate-300 mt-4">
+            Développement d’une application web permettant de générer et gérer des CV en ligne. Ce projet m’a permis de travailler sur la structuration des données, la gestion des informations utilisateur et la création d’une interface claire et fonctionnelle.
+          </p>
           <div class="flex flex-wrap gap-3 mt-5">
             <span class="tag px-3 py-1 rounded-full text-xs">HTML</span>
             <span class="tag px-3 py-1 rounded-full text-xs">CSS</span>
             <span class="tag px-3 py-1 rounded-full text-xs">JavaScript</span>
             <span class="tag px-3 py-1 rounded-full text-xs">MySQL</span>
-            <span class="tag px-3 py-1 rounded-full text-xs">PHP</span>         
+            <span class="tag px-3 py-1 rounded-full text-xs">PHP</span>
           </div>
           <div class="flex flex-wrap gap-3 mt-6">
-  <a href="https://github.com/MaelysLeBrun/CVVEN" class="pink-button px-4 py-2 rounded-xl text-sm font-semibold">GitHub</a>
-  <button
-    class="open-pdf outline-button px-4 py-2 rounded-xl border border-white/15 bg-white/5 text-white text-sm font-semibold"
-    data-title="Fiche projet — CVVEN"
-    data-pdf="CVVEN PROJET.pdf">
-    Voir la fiche projet
-  </button>
-</div>
+            <a href="https://github.com/MaelysLeBrun/CVVEN" target="_blank" class="pink-button px-4 py-2 rounded-xl text-sm font-semibold">GitHub</a>
+            <button
+              class="open-pdf outline-button px-4 py-2 rounded-xl border border-white/15 bg-white/5 text-white text-sm font-semibold"
+              data-title="Fiche projet — CVVEN"
+              data-pdf="pdf/cvven.pdf">
+              Voir la fiche projet
+            </button>
+          </div>
         </div>
       </article>
     </div>
-    <div class="mt-12 text-center">
-  <a href="https://github.com/MaelysLeBrun" target="_blank"
-    class="inline-flex items-center gap-3 px-6 py-3 rounded-2xl border border-white/10 bg-white/5 text-white font-semibold hover:text-pink-300 hover:border-pink-300/30 transition">
 
-    <!-- icône github -->
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55v-2.16c-3.2.7-3.88-1.54-3.88-1.54-.53-1.33-1.29-1.69-1.29-1.69-1.06-.73.08-.72.08-.72 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.1-.76.41-1.27.75-1.56-2.55-.29-5.23-1.27-5.23-5.64 0-1.25.45-2.27 1.2-3.07-.12-.29-.52-1.46.11-3.05 0 0 .98-.31 3.2 1.17a11.1 11.1 0 0 1 5.82 0c2.22-1.48 3.2-1.17 3.2-1.17.63 1.59.23 2.76.11 3.05.75.8 1.2 1.82 1.2 3.07 0 4.38-2.69 5.35-5.25 5.63.42.36.8 1.09.8 2.2v3.26c0 .3.21.66.79.55A11.52 11.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/>
-    </svg>
-    Voir tous mes projets sur GitHub !
-  </a>
-</div>
+    <div class="mt-12 text-center">
+      <a href="https://github.com/MaelysLeBrun" target="_blank"
+        class="inline-flex items-center gap-3 px-6 py-3 rounded-2xl border border-white/10 bg-white/5 text-white font-semibold hover:text-pink-300 hover:border-pink-300/30 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55v-2.16c-3.2.7-3.88-1.54-3.88-1.54-.53-1.33-1.29-1.69-1.29-1.69-1.06-.73.08-.72.08-.72 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.1-.76.41-1.27.75-1.56-2.55-.29-5.23-1.27-5.23-5.64 0-1.25.45-2.27 1.2-3.07-.12-.29-.52-1.46.11-3.05 0 0 .98-.31 3.2 1.17a11.1 11.1 0 0 1 5.82 0c2.22-1.48 3.2-1.17 3.2-1.17.63 1.59.23 2.76.11 3.05.75.8 1.2 1.82 1.2 3.07 0 4.38-2.69 5.35-5.25 5.63.42.36.8 1.09.8 2.2v3.26c0 .3.21.66.79.55A11.52 11.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/>
+        </svg>
+        Voir tous mes projets sur GitHub !
+      </a>
+    </div>
   </section>
 
   <section id="stages" class="max-w-7xl mx-auto px-6 py-20">
-  <div class="mb-10 reveal">
-    <h2 class="section-title text-3xl md:text-4xl font-bold mt-3">Mes stages</h2>
-    <p class="text-slate-400 leading-8 mt-6 max-w-4xl">
-      Mes stages m’ont permis de découvrir des contextes professionnels variés, de travailler sur des besoins concrets et de développer mes compétences en développement, en traitement de données et en adaptation à un environnement de travail réel.
-    </p>
-  </div>
-
-  <div class="grid xl:grid-cols-2 gap-6">
-    <article class="glass soft-border rounded-[2rem] p-7 card-hover reveal">
-      <div class="flex items-center justify-between gap-4 flex-wrap mb-5">
-        <span class="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs uppercase tracking-[0.25em] text-pink-200">
-          Stage 2026
-        </span>
-        <span class="text-sm text-slate-400">26 janvier 2026 – 20 mars 2026</span>
-      </div>
-
-      <h3 class="text-2xl font-bold">Loiselet & Daigremont</h3>
-      <p class="text-pink-200 text-sm mt-2">Service informatique · Stagiaire développeuse</p>
-
-      <p class="text-sm leading-7 text-slate-300 mt-5">
-        Lors de ce stage, j’ai participé à différents travaux liés aux outils internes de l’entreprise, en intervenant notamment sur des macros, des traitements de données et des ajustements sur des pages d’application.
+    <div class="mb-10 reveal">
+      <h2 class="section-title text-3xl md:text-4xl font-bold mt-3">Mes stages</h2>
+      <p class="text-slate-400 leading-8 mt-6 max-w-4xl">
+        Mes stages m’ont permis de découvrir des contextes professionnels variés, de travailler sur des besoins concrets et de développer mes compétences en développement, en traitement de données et en adaptation à un environnement de travail réel.
       </p>
+    </div>
 
-      <p class="text-sm leading-7 text-slate-300 mt-3">
-        J’ai également développé un programme permettant de répondre à une problématique liée à des PDF manquants, en recherchant et structurant une solution adaptée au besoin exprimé.
-      </p>
+    <div class="grid xl:grid-cols-2 gap-6">
+      <article class="glass soft-border rounded-[2rem] p-7 card-hover reveal">
+        <div class="flex items-center justify-between gap-4 flex-wrap mb-5">
+          <span class="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs uppercase tracking-[0.25em] text-pink-200">
+            Stage 2026
+          </span>
+          <span class="text-sm text-slate-400">26 janvier 2026 – 20 mars 2026</span>
+        </div>
 
-      <div class="flex flex-wrap gap-3 mt-5">
-        <span class="tag px-3 py-1 rounded-full text-xs">LibreOffice Calc</span>
-        <span class="tag px-3 py-1 rounded-full text-xs">VS Code</span>
-        <span class="tag px-3 py-1 rounded-full text-xs">Macros</span>
-        <span class="tag px-3 py-1 rounded-full text-xs">IBM i / AS400</span>
-        <span class="tag px-3 py-1 rounded-full text-xs">Lodasi</span>
-        <span class="tag px-3 py-1 rounded-full text-xs">PDF</span>
-      </div>
-    </article>
+        <h3 class="text-2xl font-bold">Loiselet & Daigremont</h3>
+        <p class="text-pink-200 text-sm mt-2">Service informatique · Stagiaire développeuse</p>
 
-    <article class="glass soft-border rounded-[2rem] p-7 card-hover reveal">
-      <div class="flex items-center justify-between gap-4 flex-wrap mb-5">
-        <span class="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs uppercase tracking-[0.25em] text-pink-200">
-          Stage 2025
-        </span>
-        <span class="text-sm text-slate-400">Stage BTS SIO</span>
-      </div>
+        <p class="text-sm leading-7 text-slate-300 mt-5">
+          Lors de ce stage, j’ai participé à différents travaux liés aux outils internes de l’entreprise, en intervenant notamment sur des macros, des traitements de données et des ajustements sur des pages d’application.
+        </p>
 
-      <h3 class="text-2xl font-bold">BUT</h3>
-      <p class="text-pink-200 text-sm mt-2">Service informatique · Stagiaire développeuse</p>
+        <p class="text-sm leading-7 text-slate-300 mt-3">
+          J’ai également développé un programme permettant de répondre à une problématique liée à des PDF manquants, en recherchant et structurant une solution adaptée au besoin exprimé.
+        </p>
 
-      <p class="text-sm leading-7 text-slate-300 mt-5">
-        Ce stage m’a permis de découvrir un nouvel environnement technique et de travailler sur des problématiques liées aux outils métiers et aux méthodes de travail en entreprise.
-      </p>
+        <div class="flex flex-wrap gap-3 mt-5">
+          <span class="tag px-3 py-1 rounded-full text-xs">LibreOffice Calc</span>
+          <span class="tag px-3 py-1 rounded-full text-xs">VS Code</span>
+          <span class="tag px-3 py-1 rounded-full text-xs">Macros</span>
+          <span class="tag px-3 py-1 rounded-full text-xs">IBM i / AS400</span>
+          <span class="tag px-3 py-1 rounded-full text-xs">Lodasi - Logiciel interne</span>
+        </div>
+      </article>
 
-      <p class="text-sm leading-7 text-slate-300 mt-3">
-        J’y ai développé ma capacité d’adaptation, mon autonomie et ma compréhension du fonctionnement d’un projet dans un cadre professionnel.
-      </p>
+      <article class="glass soft-border rounded-[2rem] p-7 card-hover reveal">
+        <div class="flex items-center justify-between gap-4 flex-wrap mb-5">
+          <span class="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs uppercase tracking-[0.25em] text-pink-200">
+            Stage 2025
+          </span>
+          <span class="text-sm text-slate-400">Stage BTS SIO</span>
+        </div>
 
-      <div class="flex flex-wrap gap-3 mt-5">
-        <span class="tag px-3 py-1 rounded-full text-xs">Adaptation</span>
-        <span class="tag px-3 py-1 rounded-full text-xs">Outils métiers</span>
-        <span class="tag px-3 py-1 rounded-full text-xs">Autonomie</span>
-        <span class="tag px-3 py-1 rounded-full text-xs">Découverte professionnelle</span>
-      </div>
-    </article>
-  </div>
-</section>
+        <h3 class="text-2xl font-bold">BUT</h3>
+        <p class="text-pink-200 text-sm mt-2">Service informatique · Stagiaire développeuse</p>
+
+        <p class="text-sm leading-7 text-slate-300 mt-5">
+          Ce stage m’a permis de découvrir un nouvel environnement technique et de travailler sur des problématiques liées aux outils métiers et aux méthodes de travail en entreprise.
+        </p>
+
+        <p class="text-sm leading-7 text-slate-300 mt-3">
+          J’y ai développé ma capacité d’adaptation, mon autonomie et ma compréhension du fonctionnement d’un projet dans un cadre professionnel.
+        </p>
+
+        <div class="flex flex-wrap gap-3 mt-5">
+          <span class="tag px-3 py-1 rounded-full text-xs">Adaptation</span>
+          <span class="tag px-3 py-1 rounded-full text-xs">Outils métiers</span>
+          <span class="tag px-3 py-1 rounded-full text-xs">Autonomie</span>
+          <span class="tag px-3 py-1 rounded-full text-xs">Découverte professionnelle</span>
+        </div>
+      </article>
+    </div>
+  </section>
 
   <section id="parcours" class="max-w-7xl mx-auto px-6 py-20">
     <div class="glass soft-border rounded-[2rem] p-8 reveal">
@@ -893,10 +910,9 @@ Les réponses de l’utilisateur sont encodées sous forme binaire puis analysé
           <span class="absolute left-[9px] top-8 w-px h-[calc(100%+20px)] bg-white/15"></span>
           <p class="text-sm font-semibold uppercase tracking-[0.2em] text-pink-200">2025/2026</p>
           <h3 class="text-lg font-semibold mt-2">Deuxième année de BTS SIO option SLAM</h3>
-          <p class="text-sm leading-7 text-slate-300 mt-2">Réalisation de projets concrets, le développement d’applications complètes et une première approche de la cybersécurité et des enjeux du numérique.</p>
+          <p class="text-sm leading-7 text-slate-300 mt-2">Réalisation de projets concrets, développement d’applications complètes et première approche de la cybersécurité et des enjeux du numérique.</p>
         </div>
 
-      <div class="mt-10 space-y-8">
         <div class="relative pl-8">
           <span class="absolute left-0 top-2 w-5 h-5 rounded-full border border-pink-300/50 bg-pink-300/20"></span>
           <span class="absolute left-[9px] top-8 w-px h-[calc(100%+20px)] bg-white/15"></span>
@@ -907,7 +923,6 @@ Les réponses de l’utilisateur sont encodées sous forme binaire puis analysé
 
         <div class="relative pl-8">
           <span class="absolute left-0 top-2 w-5 h-5 rounded-full border border-pink-300/50 bg-pink-300/20"></span>
-          <span class="absolute left-[9px] top-8 w-px h-[calc(100%+20px)] bg-white/15"></span>
           <p class="text-sm font-semibold uppercase tracking-[0.2em] text-pink-200">2023/2024</p>
           <h3 class="text-lg font-semibold mt-2">BAC STMG SIG</h3>
           <p class="text-sm leading-7 text-slate-300 mt-2">Diplôme obtenu avec mention Bien, qui m’a permis de découvrir les bases des systèmes informatiques, de la gestion des données et de la logique des organisations.</p>
@@ -917,36 +932,30 @@ Les réponses de l’utilisateur sont encodées sous forme binaire puis analysé
   </section>
 
   <section id="veille" class="max-w-7xl mx-auto px-6 py-20">
-  <div class="glass soft-border rounded-[2rem] p-8 reveal">
-    <p class="text-sm uppercase tracking-[0.3em] text-pink-200">Veille technologique</p>
-    <h2 class="section-title text-3xl font-bold mt-3">L’évolution du droit du numérique</h2>
+    <div class="glass soft-border rounded-[2rem] p-8 reveal">
+      <p class="text-sm uppercase tracking-[0.3em] text-pink-200">Veille technologique</p>
+      <h2 class="section-title text-3xl font-bold mt-3">L’évolution du droit du numérique</h2>
 
-    <p class="text-sm leading-7 text-slate-300 mt-6">
-      Dans le cadre de ma veille technologique, j’ai choisi de m’intéresser à l’évolution du droit du numérique face aux innovations technologiques.
-      Ce thème me permet d’explorer les liens entre les avancées techniques (comme l’intelligence artificielle ou la cybersécurité)
-      et les règles juridiques mises en place pour les encadrer.
-    </p>
+      <p class="text-sm leading-7 text-slate-300 mt-6">
+        Dans le cadre de ma veille technologique, j’ai choisi de m’intéresser à l’évolution du droit du numérique face aux innovations technologiques. Ce thème me permet d’explorer les liens entre les avancées techniques, comme l’intelligence artificielle ou la cybersécurité, et les règles juridiques mises en place pour les encadrer.
+      </p>
 
-    <p class="text-sm leading-7 text-slate-300 mt-4">
-      J’ai choisi ce sujet car il correspond directement à mon projet professionnel : poursuivre mes études en droit
-      afin de me spécialiser dans le droit du numérique et comprendre les enjeux liés à la protection des données,
-      à la sécurité et à la régulation des technologies.
-    </p>
+      <p class="text-sm leading-7 text-slate-300 mt-4">
+        J’ai choisi ce sujet car il correspond directement à mon projet professionnel : poursuivre mes études en droit afin de me spécialiser dans le droit du numérique et comprendre les enjeux liés à la protection des données, à la sécurité et à la régulation des technologies.
+      </p>
 
-    <div class="mt-6">
-      <a href="https://www.pearltrees.com/maelys_lb/veille-technologique/id102999312" target="_blank"
-         class="inline-flex items-center gap-3 px-5 py-3 rounded-2xl border border-white/10 bg-white/5 text-white font-semibold hover:text-pink-300 hover:border-pink-300/30 transition">
-        
-        Voir ma veille sur Pearltrees
-
-      </a>
+      <div class="mt-6">
+        <a href="https://www.pearltrees.com/maelys_lb/veille-technologique/id102999312" target="_blank"
+           class="inline-flex items-center gap-3 px-5 py-3 rounded-2xl border border-white/10 bg-white/5 text-white font-semibold hover:text-pink-300 hover:border-pink-300/30 transition">
+          Voir ma veille sur Pearltrees
+        </a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <section id="contact" class="max-w-7xl mx-auto px-6 py-20">
     <div class="rounded-[2.5rem] border border-white/10 bg-[linear-gradient(135deg,rgba(244,114,182,0.08),rgba(255,255,255,0.03))] backdrop-blur-2xl p-8 md:p-12 reveal">
-          <div class="mt-4 grid lg:grid-cols-[1fr_0.9fr] gap-8 items-end">
+      <div class="mt-4 grid lg:grid-cols-[1fr_0.9fr] gap-8 items-end">
         <div>
           <h2 class="section-title text-3xl md:text-4xl font-bold">Contactez-moi !</h2>
           <p class="text-base leading-8 text-slate-300 mt-5 max-w-2xl">
@@ -957,7 +966,7 @@ Les réponses de l’utilisateur sont encodées sous forme binaire puis analysé
         <div class="grid gap-4 rounded-[2rem] border border-white/10 bg-slate-950/60 p-6">
           <div>
             <p class="text-xs uppercase tracking-[0.25em] text-slate-500">Email</p>
-            <a href="mailto:tonmail@email.com" class="mt-2 block text-white hover:text-pink-300 transition">maelys.lebrun.pro@gmail.com</a>
+            <a href="mailto:maelys.lebrun.pro@gmail.com" class="mt-2 block text-white hover:text-pink-300 transition">maelys.lebrun.pro@gmail.com</a>
           </div>
           <div>
             <p class="text-xs uppercase tracking-[0.25em] text-slate-500">GitHub</p>
@@ -990,22 +999,22 @@ Les réponses de l’utilisateur sont encodées sous forme binaire puis analysé
   </button>
 
   <div id="pdfModal" class="fixed inset-0 z-[999] hidden items-center justify-center bg-black/70 px-4">
-  <div class="relative w-full max-w-5xl h-[85vh] glass soft-border rounded-[2rem] overflow-hidden">
-    <div class="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-slate-950/70">
-      <h3 id="pdfModalTitle" class="text-lg md:text-xl font-semibold text-white">Fiche projet</h3>
-      <button id="closePdfModal" class="w-10 h-10 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition text-white text-xl">
-        ×
-      </button>
-    </div>
+    <div class="relative w-full max-w-5xl h-[85vh] glass soft-border rounded-[2rem] overflow-hidden">
+      <div class="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-slate-950/70">
+        <h3 id="pdfModalTitle" class="text-lg md:text-xl font-semibold text-white">Fiche projet</h3>
+        <button id="closePdfModal" class="w-10 h-10 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition text-white text-xl">
+          ×
+        </button>
+      </div>
 
-    <iframe
-      id="pdfViewer"
-      src=""
-      class="w-full h-[calc(85vh-73px)] bg-white"
-      frameborder="0">
-    </iframe>
+      <iframe
+        id="pdfViewer"
+        src=""
+        class="w-full h-[calc(85vh-73px)] bg-white"
+        frameborder="0">
+      </iframe>
+    </div>
   </div>
-</div>
 
   <script>
     const menuButton = document.getElementById('menuButton');
@@ -1079,7 +1088,7 @@ Les réponses de l’utilisateur sont encodées sous forme binaire puis analysé
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-        const skillsToggles = document.querySelectorAll('.skills-toggle');
+    const skillsToggles = document.querySelectorAll('.skills-toggle');
 
     skillsToggles.forEach(button => {
       button.addEventListener('click', () => {
@@ -1092,44 +1101,44 @@ Les réponses de l’utilisateur sont encodées sous forme binaire puis analysé
     });
 
     const pdfModal = document.getElementById('pdfModal');
-const pdfViewer = document.getElementById('pdfViewer');
-const pdfModalTitle = document.getElementById('pdfModalTitle');
-const closePdfModal = document.getElementById('closePdfModal');
-const pdfButtons = document.querySelectorAll('.open-pdf');
+    const pdfViewer = document.getElementById('pdfViewer');
+    const pdfModalTitle = document.getElementById('pdfModalTitle');
+    const closePdfModal = document.getElementById('closePdfModal');
+    const pdfButtons = document.querySelectorAll('.open-pdf');
 
-pdfButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const pdfPath = button.getAttribute('data-pdf');
-    const title = button.getAttribute('data-title');
+    pdfButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const pdfPath = button.getAttribute('data-pdf');
+        const title = button.getAttribute('data-title');
 
-    pdfViewer.src = pdfPath;
-    pdfModalTitle.textContent = title;
-    pdfModal.classList.remove('hidden');
-    pdfModal.classList.add('flex');
-    document.body.style.overflow = 'hidden';
-  });
-});
+        pdfViewer.src = pdfPath;
+        pdfModalTitle.textContent = title;
+        pdfModal.classList.remove('hidden');
+        pdfModal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      });
+    });
 
-const closeModal = () => {
-  pdfModal.classList.add('hidden');
-  pdfModal.classList.remove('flex');
-  pdfViewer.src = '';
-  document.body.style.overflow = '';
-};
+    const closeModal = () => {
+      pdfModal.classList.add('hidden');
+      pdfModal.classList.remove('flex');
+      pdfViewer.src = '';
+      document.body.style.overflow = '';
+    };
 
-closePdfModal.addEventListener('click', closeModal);
+    closePdfModal.addEventListener('click', closeModal);
 
-pdfModal.addEventListener('click', (e) => {
-  if (e.target === pdfModal) {
-    closeModal();
-  }
-});
+    pdfModal.addEventListener('click', (e) => {
+      if (e.target === pdfModal) {
+        closeModal();
+      }
+    });
 
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && !pdfModal.classList.contains('hidden')) {
-    closeModal();
-  }
-});
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !pdfModal.classList.contains('hidden')) {
+        closeModal();
+      }
+    });
   </script>
 
 </body>
