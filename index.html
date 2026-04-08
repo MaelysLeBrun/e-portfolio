@@ -267,32 +267,42 @@
       transform: scale(1.05);
     }
 
-    .cvven-carousel {
-      max-height: 0;
-      overflow: hidden;
-      opacity: 0;
-      margin-top: 0;
-      transform: translateY(8px);
-      transition: max-height 0.35s ease, opacity 0.25s ease, margin-top 0.25s ease, transform 0.25s ease;
+    .cvven-carousel-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(2, 6, 23, 0.78);
+      padding: 1rem;
     }
 
-    .cvven-carousel.open {
-      max-height: 380px;
-      opacity: 1;
-      margin-top: 14px;
-      transform: translateY(0);
+    .cvven-carousel-modal.open {
+      display: flex;
     }
 
-    .cvven-slide {
+    .cvven-modal-panel {
+      width: min(920px, 100%);
+      border-radius: 1.5rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      padding: 1rem;
+    }
+
+    .cvven-modal-slide {
       display: none;
       width: 100%;
-      height: 220px;
+      height: 62vh;
+      max-height: 620px;
       object-fit: cover;
       border-radius: 1rem;
       border: 1px solid rgba(255,255,255,0.1);
     }
 
-    .cvven-slide.active {
+    .cvven-modal-slide.active {
       display: block;
     }
 
@@ -333,6 +343,12 @@
     .cvven-dot.active {
       width: 24px;
       background: linear-gradient(to right, #ec4899, #f472b6);
+    }
+
+    @media (max-width: 640px) {
+      .cvven-modal-slide {
+        height: 48vh;
+      }
     }
   </style>
 </head>
@@ -894,40 +910,6 @@
           
           </div>
 
-          <div id="cvvenCarousel" class="cvven-carousel">
-            <div class="relative">
-              <img src="cvven1.jpg" alt="CVVEN - écran d'accueil" class="cvven-slide active">
-              <img src="cvven2.jpg" alt="CVVEN - écran de réservation" class="cvven-slide">
-              <img src="cvven3.jpg" alt="CVVEN - écran administrateur" class="cvven-slide">
-              <img src="cvven4.jpg" alt="CVVEN - écran d'accueil" class="cvven-slide active">
-              <img src="cvven5.jpg" alt="CVVEN - écran de réservation" class="cvven-slide">
-              <img src="cvven6.jpg" alt="CVVEN - écran administrateur" class="cvven-slide">
-              <img src="cvven7.jpg" alt="CVVEN - écran d'accueil" class="cvven-slide active">
-              <img src="cvven8.jpg" alt="CVVEN - écran de réservation" class="cvven-slide">
-              <img src="cvven9.jpg" alt="CVVEN - écran administrateur" class="cvven-slide">
-              <img src="cvven10.jpg" alt="CVVEN - écran d'accueil" class="cvven-slide active">
-
-
-              <div class="absolute inset-x-0 bottom-3 px-3 flex items-center justify-between">
-                <button id="cvvenPrev" type="button" class="cvven-control" aria-label="Image précédente">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-                  </svg>
-                </button>
-                <button id="cvvenNext" type="button" class="cvven-control" aria-label="Image suivante">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-
-            <div class="cvven-dots mt-3">
-              <button type="button" class="cvven-dot active" aria-label="Image 1"></button>
-              <button type="button" class="cvven-dot" aria-label="Image 2"></button>
-              <button type="button" class="cvven-dot" aria-label="Image 3"></button>
-            </div>
-          </div>
         </div>
       </article>
     </div>
@@ -1129,6 +1111,45 @@
     </div>
   </div>
 
+  <div id="cvvenCarouselModal" class="cvven-carousel-modal" aria-hidden="true">
+    <div class="cvven-modal-panel">
+      <div class="flex items-center justify-between gap-4 mb-3">
+        <h3 class="text-base md:text-lg font-semibold text-white">CVVEN — Galerie d'images</h3>
+        <button id="closeCvvenCarousel" class="w-10 h-10 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition text-white text-xl" aria-label="Fermer la galerie">
+          ×
+        </button>
+      </div>
+
+      <div class="relative">
+        <img src="cvven1.jpg" alt="CVVEN - écran d'accueil" class="cvven-modal-slide active">
+        <img src="cvven2.jpg" alt="CVVEN - écran de réservation" class="cvven-modal-slide">
+        <img src="cvven3.jpg" alt="CVVEN - écran administrateur" class="cvven-modal-slide">
+        <img src="cvven4.jpg" alt="CVVEN - écran de gestion" class="cvven-modal-slide">
+        <img src="cvven5.jpg" alt="CVVEN - écran de chambre" class="cvven-modal-slide">
+        <img src="cvven6.jpg" alt="CVVEN - écran de planning" class="cvven-modal-slide">
+        <img src="cvven7.jpg" alt="CVVEN - écran de détail" class="cvven-modal-slide">
+        <img src="cvven8.jpg" alt="CVVEN - écran de recherche" class="cvven-modal-slide">
+        <img src="cvven9.jpg" alt="CVVEN - écran de tableau de bord" class="cvven-modal-slide">
+        <img src="cvven10.jpg" alt="CVVEN - écran final" class="cvven-modal-slide">
+
+        <div class="absolute inset-x-0 bottom-3 px-3 flex items-center justify-between">
+          <button id="cvvenPrev" type="button" class="cvven-control" aria-label="Image précédente">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+          </button>
+          <button id="cvvenNext" type="button" class="cvven-control" aria-label="Image suivante">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div id="cvvenDotsContainer" class="cvven-dots mt-3"></div>
+    </div>
+  </div>
+
   <script>
     const menuButton = document.getElementById('menuButton');
     const mobileMenu = document.getElementById('mobileMenu');
@@ -1228,7 +1249,11 @@
         pdfModalTitle.textContent = title;
         pdfModal.classList.remove('hidden');
         pdfModal.classList.add('flex');
-        document.body.style.overflow = 'hidden';
+        if (typeof syncBodyScroll === 'function') {
+          syncBodyScroll();
+        } else {
+          document.body.style.overflow = 'hidden';
+        }
       });
     });
 
@@ -1236,7 +1261,11 @@
       pdfModal.classList.add('hidden');
       pdfModal.classList.remove('flex');
       pdfViewer.src = '';
-      document.body.style.overflow = '';
+      if (typeof syncBodyScroll === 'function') {
+        syncBodyScroll();
+      } else {
+        document.body.style.overflow = '';
+      }
     };
 
     closePdfModal.addEventListener('click', closeModal);
@@ -1247,19 +1276,24 @@
       }
     });
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !pdfModal.classList.contains('hidden')) {
-        closeModal();
-      }
-    });
-
     const cvvenCarouselToggle = document.getElementById('cvvenCarouselToggle');
-    const cvvenCarousel = document.getElementById('cvvenCarousel');
-    const cvvenSlides = document.querySelectorAll('.cvven-slide');
-    const cvvenDots = document.querySelectorAll('.cvven-dot');
+    const cvvenCarouselModal = document.getElementById('cvvenCarouselModal');
+    const closeCvvenCarousel = document.getElementById('closeCvvenCarousel');
+    const cvvenSlides = document.querySelectorAll('.cvven-modal-slide');
+    const cvvenDotsContainer = document.getElementById('cvvenDotsContainer');
     const cvvenPrev = document.getElementById('cvvenPrev');
     const cvvenNext = document.getElementById('cvvenNext');
+    const cvvenModalPanel = cvvenCarouselModal ? cvvenCarouselModal.querySelector('.cvven-modal-panel') : null;
+    let cvvenDots = [];
     let cvvenCurrentSlide = 0;
+    let cvvenTouchStartX = 0;
+    let cvvenTouchStartY = 0;
+
+    const syncBodyScroll = () => {
+      const isPdfOpen = !pdfModal.classList.contains('hidden');
+      const isCvvenOpen = cvvenCarouselModal && cvvenCarouselModal.classList.contains('open');
+      document.body.style.overflow = (isPdfOpen || isCvvenOpen) ? 'hidden' : '';
+    };
 
     const updateCvvenCarousel = (index) => {
       cvvenSlides.forEach((slide, i) => {
@@ -1276,10 +1310,34 @@
       updateCvvenCarousel(cvvenCurrentSlide);
     };
 
-    if (cvvenCarouselToggle && cvvenCarousel && cvvenSlides.length > 0) {
+    const openCvvenModal = () => {
+      cvvenCarouselModal.classList.add('open');
+      cvvenCarouselModal.setAttribute('aria-hidden', 'false');
+      syncBodyScroll();
+    };
+
+    const closeCvvenModal = () => {
+      cvvenCarouselModal.classList.remove('open');
+      cvvenCarouselModal.setAttribute('aria-hidden', 'true');
+      syncBodyScroll();
+    };
+
+    if (cvvenCarouselToggle && cvvenCarouselModal && cvvenSlides.length > 0) {
+      cvvenDotsContainer.innerHTML = '';
+      cvvenDots = Array.from(cvvenSlides).map((_, index) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = `cvven-dot ${index === 0 ? 'active' : ''}`;
+        dot.setAttribute('aria-label', `Image ${index + 1}`);
+        dot.addEventListener('click', () => {
+          goToCvvenSlide(index);
+        });
+        cvvenDotsContainer.appendChild(dot);
+        return dot;
+      });
+
       cvvenCarouselToggle.addEventListener('click', () => {
-        const isOpen = cvvenCarousel.classList.toggle('open');
-        cvvenCarouselToggle.textContent = isOpen ? 'Masquer les images' : 'Voir les images';
+        openCvvenModal();
       });
 
       cvvenPrev.addEventListener('click', () => {
@@ -1290,12 +1348,56 @@
         goToCvvenSlide(cvvenCurrentSlide + 1);
       });
 
-      cvvenDots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-          goToCvvenSlide(index);
-        });
+      closeCvvenCarousel.addEventListener('click', () => {
+        closeCvvenModal();
       });
+
+      cvvenCarouselModal.addEventListener('click', (e) => {
+        if (e.target === cvvenCarouselModal) {
+          closeCvvenModal();
+        }
+      });
+
+      if (cvvenModalPanel) {
+        cvvenModalPanel.addEventListener('touchstart', (e) => {
+          const touch = e.changedTouches[0];
+          cvvenTouchStartX = touch.clientX;
+          cvvenTouchStartY = touch.clientY;
+        }, { passive: true });
+
+        cvvenModalPanel.addEventListener('touchend', (e) => {
+          const touch = e.changedTouches[0];
+          const deltaX = touch.clientX - cvvenTouchStartX;
+          const deltaY = touch.clientY - cvvenTouchStartY;
+
+          if (Math.abs(deltaX) < 45 || Math.abs(deltaX) < Math.abs(deltaY)) {
+            return;
+          }
+
+          if (deltaX < 0) {
+            goToCvvenSlide(cvvenCurrentSlide + 1);
+          } else {
+            goToCvvenSlide(cvvenCurrentSlide - 1);
+          }
+        }, { passive: true });
+      }
+
+      updateCvvenCarousel(0);
     }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') {
+        return;
+      }
+
+      if (!pdfModal.classList.contains('hidden')) {
+        closeModal();
+      }
+
+      if (cvvenCarouselModal && cvvenCarouselModal.classList.contains('open')) {
+        closeCvvenModal();
+      }
+    });
   </script>
 
 </body>
